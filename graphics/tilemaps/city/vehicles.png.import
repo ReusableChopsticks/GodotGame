@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlq3mq4qhpkhg"
-path="res://.godot/imported/TX Props.png-701fdd2876bf3d041edfaf3d05c28b3e.ctex"
+uid="uid://boh25oyc2l5oq"
+path="res://.godot/imported/vehicles.png-1560d9e26cbb6bbe522f12013e2cdf1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/basic/TX Props.png"
-dest_files=["res://.godot/imported/TX Props.png-701fdd2876bf3d041edfaf3d05c28b3e.ctex"]
+source_file="res://graphics/tilemaps/city/vehicles.png"
+dest_files=["res://.godot/imported/vehicles.png-1560d9e26cbb6bbe522f12013e2cdf1e.ctex"]
 
 [params]
 

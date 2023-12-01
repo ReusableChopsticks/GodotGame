@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o2uk2yldem3g"
-path="res://.godot/imported/street.png-09de3847596ff2195f6c3944850e809f.ctex"
+uid="uid://co1ae1qbrqke3"
+path="res://.godot/imported/buildings.png-02b76f05e3d39f57cce76ddd739f35be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/city/street.png"
-dest_files=["res://.godot/imported/street.png-09de3847596ff2195f6c3944850e809f.ctex"]
+source_file="res://graphics/tilemaps/city/buildings.png"
+dest_files=["res://.godot/imported/buildings.png-02b76f05e3d39f57cce76ddd739f35be.ctex"]
 
 [params]
 

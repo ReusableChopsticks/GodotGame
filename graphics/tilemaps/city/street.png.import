@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crjuu5o2atkf7"
-path="res://.godot/imported/TX Plant.png-dd5b9337ca4f723327c8844326e9ee95.ctex"
+uid="uid://o2uk2yldem3g"
+path="res://.godot/imported/street.png-a00187baa637e743d7405e34c6796e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/basic/TX Plant.png"
-dest_files=["res://.godot/imported/TX Plant.png-dd5b9337ca4f723327c8844326e9ee95.ctex"]
+source_file="res://graphics/tilemaps/city/street.png"
+dest_files=["res://.godot/imported/street.png-a00187baa637e743d7405e34c6796e74.ctex"]
 
 [params]
 

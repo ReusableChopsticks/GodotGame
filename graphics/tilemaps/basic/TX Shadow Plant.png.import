@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvk2xbsqueotc"
-path="res://.godot/imported/corner_grass_tile.png-51abd0b2bcac11b4081843f048d462de.ctex"
+uid="uid://c5mt2egtovjrw"
+path="res://.godot/imported/TX Shadow Plant.png-5bfff1728a3e7b24b7f6b470a9fb5c99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/city/corner_grass_tile.png"
-dest_files=["res://.godot/imported/corner_grass_tile.png-51abd0b2bcac11b4081843f048d462de.ctex"]
+source_file="res://graphics/tilemaps/basic/TX Shadow Plant.png"
+dest_files=["res://.godot/imported/TX Shadow Plant.png-5bfff1728a3e7b24b7f6b470a9fb5c99.ctex"]
 
 [params]
 

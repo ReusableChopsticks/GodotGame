@@ -1,17 +1,20 @@
 extends Area2D
-var screen_size
-@export var speed = 400
-@export var moving = false
 signal hit
 signal eat
 signal eat_fail
 signal throw
 signal camera_out(is_camera_out)
 signal camera_taking
+
+var screen_size
 var is_camera_out
 var throw_distance
+
+@export var speed = 400
+@export var moving = false
 @export var starting_throw_distance = 5
 @export var throw_grow_distance = 5
+@export var player_stats: Resource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +22,7 @@ func _ready():
 	throw_distance = starting_throw_distance
 	is_camera_out = false
 	
-	# Replace with function body.
+	player_stats.player_pos = position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,6 +64,9 @@ func _process(delta):
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	# Set the player pos in stats resource to be accessed by other nodes (like enemies)
+	player_stats.player_pos = position
 	
 func _on_body_entered(_body):
 	#hide() # Player disappears after being hit.

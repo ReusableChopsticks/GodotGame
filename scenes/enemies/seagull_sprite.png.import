@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boh25oyc2l5oq"
-path="res://.godot/imported/vehicles.png-cd706632aca83425a2db25b560a69693.ctex"
+uid="uid://bkp3tumpdkxeq"
+path="res://.godot/imported/seagull_sprite.png-e560dd27726a2c97a360062472740ca3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/city/vehicles.png"
-dest_files=["res://.godot/imported/vehicles.png-cd706632aca83425a2db25b560a69693.ctex"]
+source_file="res://scenes/enemies/seagull_sprite.png"
+dest_files=["res://.godot/imported/seagull_sprite.png-e560dd27726a2c97a360062472740ca3.ctex"]
 
 [params]
 

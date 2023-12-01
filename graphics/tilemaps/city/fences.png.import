@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5mt2egtovjrw"
-path="res://.godot/imported/TX Shadow Plant.png-b42a55609f2d12a2b88e5f0588c1dac7.ctex"
+uid="uid://defu8rmya3je3"
+path="res://.godot/imported/fences.png-e739bda9ca1c45bb6b44d8528885af70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/basic/TX Shadow Plant.png"
-dest_files=["res://.godot/imported/TX Shadow Plant.png-b42a55609f2d12a2b88e5f0588c1dac7.ctex"]
+source_file="res://graphics/tilemaps/city/fences.png"
+dest_files=["res://.godot/imported/fences.png-e739bda9ca1c45bb6b44d8528885af70.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwr1uwjwbcvy1"
-path="res://.godot/imported/TX Struct.png-f6013724e85bb07962f3e8cd6a275540.ctex"
+uid="uid://bworjd3vss5up"
+path="res://.godot/imported/TX Shadow.png-dbfbdecf6a288d76f702b86a96c3bc7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/basic/TX Struct.png"
-dest_files=["res://.godot/imported/TX Struct.png-f6013724e85bb07962f3e8cd6a275540.ctex"]
+source_file="res://graphics/tilemaps/basic/TX Shadow.png"
+dest_files=["res://.godot/imported/TX Shadow.png-dbfbdecf6a288d76f702b86a96c3bc7e.ctex"]
 
 [params]
 

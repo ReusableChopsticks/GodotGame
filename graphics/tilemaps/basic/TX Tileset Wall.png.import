@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://defu8rmya3je3"
-path="res://.godot/imported/fences.png-26c8fdfa25bfb8cc75f91ebecf211f2c.ctex"
+uid="uid://vvpkxc1uj7xw"
+path="res://.godot/imported/TX Tileset Wall.png-e4100c5dc4fd36882e1859fed402a896.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/city/fences.png"
-dest_files=["res://.godot/imported/fences.png-26c8fdfa25bfb8cc75f91ebecf211f2c.ctex"]
+source_file="res://graphics/tilemaps/basic/TX Tileset Wall.png"
+dest_files=["res://.godot/imported/TX Tileset Wall.png-e4100c5dc4fd36882e1859fed402a896.ctex"]
 
 [params]
 

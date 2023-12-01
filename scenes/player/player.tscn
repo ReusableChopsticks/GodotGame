@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg0v6u1bn1odk"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_b1fbc"]
-[ext_resource type="Texture2D" uid="uid://bba24imwcqw6x" path="res://icon.svg" id="1_co63w"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fs08q"]
+[ext_resource type="Texture2D" uid="uid://bba24imwcqw6x" path="res://icon.svg" id="2_js755"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jpyx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_co63w")
+"texture": ExtResource("2_js755")
 }],
 "loop": true,
 "name": &"default",
@@ -17,9 +17,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltp45"]
 radius = 65.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(574, 318)
-script = ExtResource("1_b1fbc")
+script = ExtResource("1_fs08q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0jpyx")

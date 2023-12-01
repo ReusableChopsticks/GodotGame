@@ -3,10 +3,9 @@ var screen_size
 @export var speed = 400
 @export var moving = false
 signal hit
-signal eat
-signal eat_fail
+signal eat(is_moving:bool)
 signal throw
-signal camera_out(is_camera_out)
+signal camera_out(is_camera_out:bool)
 signal camera_taking
 var is_camera_out
 var throw_distance
@@ -48,10 +47,7 @@ func _process(delta):
 		throw_distance = starting_throw_distance
 	
 	if Input.is_action_pressed("eat"):
-		if velocity.length() == 0:
-			eat.emit()
-		else:
-			eat_fail.emit()
+		eat.emit(moving)
 	if Input.is_action_pressed("ready_camera"):
 		is_camera_out = !is_camera_out
 		camera_out.emit(is_camera_out)

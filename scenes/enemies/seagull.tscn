@@ -16,7 +16,7 @@ player_stats = ExtResource("2_a8tb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.595, 0)
-scale = Vector2(0.027027, 0.027027)
+scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_jpumt")
 
 [node name="SeagullCollider" type="CollisionShape2D" parent="."]

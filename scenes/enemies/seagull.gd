@@ -7,28 +7,26 @@
 
 extends CharacterBody2D
 
-
 @export var attack_travel_time: float = 2
 @export var attack_extra_distance_percentage: float = 0.5
 @export var player_stats: Resource
 
 # to avoid seagull continuously locking on to player
 var is_attacking: bool = false
-#func _process(delta):
 
-
-# Will change player to be characterbody instead so this works instead
+# For a character body 2d
 func _on_detect_area_body_entered(body):
-	pass
-
-func _on_detect_area_area_entered(area):
-	if area.name == "Player" and !is_attacking:
+	if body.name == "Player" and !is_attacking:
 		print("player detected")
 		is_attacking = true
 		fly_towards_player()
 	else:
 		# TODO: debugging for now, delete later
-		print(str(area.name) + " has entered seagull range")
+		print(str(body.name) + " has entered seagull range")
+
+# If the player is an Area2D for some reason, copy paste code above down here
+func _on_detect_area_area_entered(area):
+	pass
 
 func fly_towards_player():
 	var tween = get_tree().create_tween().set_parallel(false)

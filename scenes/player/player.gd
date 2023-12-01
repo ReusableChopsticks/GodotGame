@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 signal hit
 signal eat(is_moving:bool)
 signal throw
@@ -26,21 +26,27 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		moving = true
-	else:
-		moving = false
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = direction * speed
+	move_and_slide()
+	
+	#var velocity = Vector2.ZERO
+	#if Input.is_action_pressed("move_up"):
+		#velocity.y -= 1
+	#if Input.is_action_pressed("move_down"):
+		#velocity.y += 1
+	#if Input.is_action_pressed("move_right"):
+		#velocity.x += 1
+	#if Input.is_action_pressed("move_left"):
+		#velocity.x -= 1
+		#
+	#if velocity.length() > 0:
+		#velocity = velocity.normalized() * speed
+		#moving = true
+	#else:
+		#moving = false
+	#position += velocity * delta
+	#position = position.clamp(Vector2.ZERO, screen_size)
 		
 	
 	if Input.is_action_pressed("throw"):
@@ -58,8 +64,6 @@ func _process(delta):
 		if is_camera_out:
 			camera_taking.emit()
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	# Set the player pos in stats resource to be accessed by other nodes (like enemies)
 	player_stats.player_pos = position

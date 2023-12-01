@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
-[ext_resource type="PackedScene" uid="uid://bg0v6u1bn1odk" path="res://player.tscn" id="2_atl8d"]
+[ext_resource type="PackedScene" uid="uid://byc3q31dfxkfl" path="res://scenes/player/player.tscn" id="2_atl8d"]
 [ext_resource type="PackedScene" uid="uid://mkfqrm438dw1" path="res://scenes/enemies/seagull.tscn" id="3_j2x8c"]
 
 [node name="LevelBase" type="Node2D"]

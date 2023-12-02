@@ -20,7 +20,7 @@ radius = 65.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jyobo")
-speed = 200
+speed = 150
 player_stats = ExtResource("2_mlrcf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

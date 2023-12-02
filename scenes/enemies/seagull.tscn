@@ -8,11 +8,13 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc353"]
-radius = 195.003
+radius = 132.242
 
 [node name="Seagull" type="CharacterBody2D"]
 script = ExtResource("1_ftxqo")
 player_stats = ExtResource("2_a8tb4")
+max_time_before_hop = 2
+max_hop_distance = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.595, 0)
@@ -27,5 +29,9 @@ shape = SubResource("CircleShape2D_oaswq")
 [node name="DetectCollider" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_lc353")
 
+[node name="HopTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]

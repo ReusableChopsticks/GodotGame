@@ -11,8 +11,15 @@ extends CharacterBody2D
 @export var attack_extra_distance_percentage: float = 0.5
 @export var player_stats: Resource
 
+@export var max_time_before_hop: int = 1
+@export var max_hop_distance: int = 5
+var hop_time: float = 0.1
+
 # to avoid seagull continuously locking on to player
 var is_attacking: bool = false
+
+func _process(_delta):
+	pass
 
 # For a character body 2d
 func _on_detect_area_body_entered(body):
@@ -37,6 +44,28 @@ func fly_towards_player():
 	# Make seagull fly to target pos with tween
 	tween.tween_property($".", "position", target_pos, attack_travel_time).set_trans(Tween.TRANS_QUAD)
 	
-
 func on_attack_finished():
 	is_attacking = false
+
+# TODO: add hop animation that plays
+func hop_random_direction():
+	# get random distance and angle
+	var hop_dist = randf() * max_hop_distance
+	var angle = randf() * 2 * PI
+	var target_pos = Vector2(position.x, position.y)
+	target_pos.x += hop_dist * cos(angle)
+	target_pos.y += hop_dist * sin(angle)
+	
+	# move seagull to this point
+	var tween = get_tree().create_tween()
+	tween.tween_property($".", "position", target_pos, hop_time).set_trans(Tween.TRANS_QUAD)
+	#move_and_slide()
+	
+	# restart hop timer
+	$HopTimer.start(randf() * max_time_before_hop)
+
+# hop every time the timer runs out
+func _on_hop_timer_timeout():
+	if !is_attacking:
+		hop_random_direction()
+	

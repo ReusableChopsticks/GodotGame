@@ -9,7 +9,7 @@ var screen_size
 var is_camera_out
 var throw_distance
 
-@export var speed = 400
+@export var speed: int = 100
 @export var moving = false
 @export var starting_throw_distance = 5
 @export var throw_grow_distance = 5

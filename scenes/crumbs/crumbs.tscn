@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw0badpfeebre"]
+[gd_scene load_steps=4 format=3 uid="uid://bw0badpfeebre"]
 
+[ext_resource type="Script" path="res://scenes/crumbs/crumbs.gd" id="1_5tj3t"]
 [ext_resource type="Texture2D" uid="uid://ced1sbcksdld0" path="res://scenes/crumbs/crumbs_sprite.png" id="1_naf0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfuvf"]
 size = Vector2(14, 14)
 
-[node name="crumbs" type="Area2D"]
+[node name="Crumbs" type="Area2D"]
+script = ExtResource("1_5tj3t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, 37)
-scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_naf0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,10 +1,11 @@
 extends CharacterBody2D
 signal hit
 signal eat(is_moving:bool)
-signal throw
+signal throw(player_pos, throw_pos)
 signal camera_out(is_camera_out:bool)
 signal camera_taking
 
+var dir_facing
 var screen_size
 var is_camera_out
 var throw_distance
@@ -24,6 +25,7 @@ func _ready():
 	is_camera_out = false
 	speed = base_speed
 	player_stats.player_pos = position
+	dir_facing = Vector2.DOWN
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +46,7 @@ func _process(_delta):
 		#
 	if direction.length() > 0:
 		#velocity = velocity.normalized() * speed
+		dir_facing = direction
 		moving = true
 	else:
 		moving = false
@@ -54,7 +57,8 @@ func _process(_delta):
 	if Input.is_action_pressed("throw"):
 		throw_distance += throw_grow_distance
 	if Input.is_action_just_released("throw"):
-		throw.emit(throw_distance)
+		var throw_pos = position + (dir_facing * throw_distance)
+		throw.emit(position, throw_pos)
 		throw_distance = starting_throw_distance
 	
 	if Input.is_action_just_pressed("eat"):

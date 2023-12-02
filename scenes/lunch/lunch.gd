@@ -28,7 +28,7 @@ func _on_player_eat(is_moving:bool):
 	elif food_type == 0:
 		eating = true
 		eating_speed_percentage.emit(wrap_move_percentage)
-	elif is_moving:
+	elif !is_moving:
 		eating = true
 		eating_speed_percentage.emit(0)
 		

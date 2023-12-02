@@ -32,7 +32,6 @@ position = Vector2(639, 297)
 scale = Vector2(0.125, 0.125)
 
 [node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]
-food_type = 1
 
 [node name="CrumbThrower" parent="Player" instance=ExtResource("5_ohson")]
 

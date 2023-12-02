@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=5 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
 [ext_resource type="PackedScene" uid="uid://byc3q31dfxkfl" path="res://scenes/player/player.tscn" id="2_atl8d"]
 [ext_resource type="PackedScene" uid="uid://mkfqrm438dw1" path="res://scenes/enemies/seagull.tscn" id="3_j2x8c"]
+[ext_resource type="PackedScene" uid="uid://bdy2oabwtmogw" path="res://scenes/lunch/lunch.tscn" id="4_70h26"]
 
 [node name="LevelBase" type="Node2D"]
 
@@ -18,16 +19,18 @@ layer_1/tile_data = PackedInt32Array(655376, 196610, 11, 720912, 196610, 12, 655
 
 [node name="Seagull" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(210, 204)
-metadata/_edit_group_ = true
 
 [node name="Seagull2" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(420, 408)
-metadata/_edit_group_ = true
 
 [node name="Seagull3" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(426, 166)
-metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_atl8d")]
 position = Vector2(639, 297)
 scale = Vector2(0.125, 0.125)
+
+[node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]
+
+[connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
+[connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]

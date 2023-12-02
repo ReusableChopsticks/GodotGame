@@ -32,7 +32,7 @@ func _on_detect_area_body_entered(body):
 		print(str(body.name) + " has entered seagull range")
 
 # If the player is an Area2D for some reason, copy paste code above down here
-func _on_detect_area_area_entered(area):
+func _on_detect_area_area_entered(_area):
 	pass
 
 func fly_towards_player():

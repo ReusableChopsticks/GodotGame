@@ -5,7 +5,7 @@
 #	- what if seagull overshoots and goes out of bounds?
 #		- Make it respawn somewhere else out of camera view?
 
-extends CharacterBody2D
+extends Area2D
 
 @export var attack_travel_time: float = 2
 @export var attack_extra_distance_percentage: float = 0.5
@@ -57,9 +57,9 @@ func hop_random_direction():
 	target_pos.y += hop_dist * sin(angle)
 	
 	# move seagull to this point
+	$AnimationPlayer.play("seagull_hop")
 	var tween = get_tree().create_tween()
 	tween.tween_property($".", "position", target_pos, hop_time).set_trans(Tween.TRANS_QUAD)
-	#move_and_slide()
 	
 	# restart hop timer
 	$HopTimer.start(randf() * max_time_before_hop)

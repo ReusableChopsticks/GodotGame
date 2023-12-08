@@ -34,6 +34,9 @@ func _process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	
+	# Set the player pos in stats resource to be accessed by other nodes (like enemies)
+	player_stats.player_pos = position
+	
 	#var velocity = Vector2.ZERO
 	#if Input.is_action_pressed("move_up"):
 		#velocity.y -= 1
@@ -57,8 +60,8 @@ func _process(_delta):
 	if Input.is_action_pressed("throw"):
 		throw_distance += throw_grow_distance
 	if Input.is_action_just_released("throw"):
-		var throw_pos = position + (dir_facing * throw_distance)
-		throw.emit(position, throw_pos)
+		var throw_pos = global_position + (dir_facing * throw_distance)
+		throw.emit(global_position, throw_pos)
 		throw_distance = starting_throw_distance
 	
 	if Input.is_action_just_pressed("eat"):
@@ -71,8 +74,7 @@ func _process(_delta):
 			camera_taking.emit()
 		
 	
-	# Set the player pos in stats resource to be accessed by other nodes (like enemies)
-	player_stats.player_pos = position
+	
 	
 func _on_body_entered(_body):
 	#hide() # Player disappears after being hit.

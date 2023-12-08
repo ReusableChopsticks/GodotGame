@@ -29,13 +29,13 @@ position = Vector2(426, 166)
 
 [node name="Player" parent="." instance=ExtResource("2_atl8d")]
 position = Vector2(639, 297)
-scale = Vector2(0.125, 0.125)
+throw_grow_distance = 1
 
 [node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]
 food_type = 1
 
-[node name="CrumbThrower" parent="Player" instance=ExtResource("5_ohson")]
+[node name="CrumbThrower" parent="." instance=ExtResource("5_ohson")]
 
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
-[connection signal="throw" from="Player" to="Player/CrumbThrower" method="_on_player_throw"]
+[connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]
 [connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]

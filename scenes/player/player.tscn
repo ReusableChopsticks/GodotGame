@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://byc3q31dfxkfl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jyobo"]
-[ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://scenes/resources/player_stats.tres" id="2_mlrcf"]
+[ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_r3ti7"]
 [ext_resource type="Texture2D" uid="uid://bba24imwcqw6x" path="res://icon.svg" id="3_wtwyb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jpyx"]
@@ -20,7 +20,7 @@ radius = 65.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jyobo")
-player_stats = ExtResource("2_mlrcf")
+player_stats = ExtResource("2_r3ti7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0jpyx")

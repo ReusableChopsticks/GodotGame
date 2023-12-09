@@ -24,12 +24,13 @@ func _process(_delta):
 # For a character body 2d
 func _on_detect_area_body_entered(body):
 	if body.name == "Player" and !is_attacking:
-		print("player detected")
+		#print("player detected")
 		is_attacking = true
 		fly_towards_player()
 	else:
 		# TODO: debugging for now, delete later
-		print(str(body.name) + " has entered seagull range")
+		#print(str(body.name) + " has entered seagull range")
+		pass
 
 # If the player is an Area2D for some reason, copy paste code above down here
 func _on_detect_area_area_entered(_area):

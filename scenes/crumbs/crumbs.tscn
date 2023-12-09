@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ced1sbcksdld0" path="res://scenes/crumbs/crumbs_sprite.png" id="1_naf0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfuvf"]
-size = Vector2(14, 14)
+size = Vector2(123, 99)
 
 [node name="Crumbs" type="Area2D"]
+scale = Vector2(0.125, 0.125)
 script = ExtResource("1_5tj3t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(80, 37)
 texture = ExtResource("1_naf0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(80, 37)
 shape = SubResource("RectangleShape2D_dfuvf")

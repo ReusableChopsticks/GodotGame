@@ -43,7 +43,6 @@ texture = ExtResource("1_8f0p4")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
 radius = 100.0
-debug_enabled = true
 
 [node name="HopTimer" type="Timer" parent="."]
 wait_time = 0.5

@@ -6,7 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twe53"]
 
-[node name="Pigeon" type="Area2D"]
+[node name="Pigeon" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ybx6o")
 player_stats = ExtResource("2_alw6l")
 
@@ -20,9 +22,10 @@ texture = ExtResource("1_8f0p4")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[node name="HopTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_path_changed"]
-[connection signal="timeout" from="HopTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

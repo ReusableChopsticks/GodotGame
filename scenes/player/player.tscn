@@ -32,6 +32,9 @@ shape = SubResource("CircleShape2D_ltp45")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.125, 0.125)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
+limit_left = -100
+limit_top = -100
+limit_right = 860
+limit_bottom = 480
 limit_smoothed = true
-position_smoothing_enabled = true

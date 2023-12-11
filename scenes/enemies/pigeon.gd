@@ -15,17 +15,18 @@ extends Area2D
 # amount pigeons scatter a bit when choosing where to hop
 @export var pos_variance: int = 10
 
-const hop_height = 10
-
-var path_loaded = false
 var target_reached = false
 
 
 func _ready():
-	call_deferred("get_next_pos")
+	call_deferred("navigation_setup")
+
+func navigation_setup():
+	# you need this line to wait for NavigationServer2D to sync (first physics frame)
+	await get_tree().physics_frame
 	nav_agent.path_desired_distance = max_hop_distance
 	hop_timer.start(randf() * max_hop_interval)
-
+	
 
 func get_next_pos():
 	nav_agent.target_position = player_stats.player_pos
@@ -38,36 +39,30 @@ func get_next_pos():
 	#var direction = (nav_agent.get_next_path_position() - player_stats.player_pos).normalized() * max_hop_distance
 	#return (position - direction)
 #endregion
-	
+	# add some variation to final position
 	var target = nav_agent.get_next_path_position()
 	target.x += randf_range(-1, 1) * pos_variance
 	target.y += randf_range(-1, 1) * pos_variance
-	
 	return target
+	
 
 func _on_navigation_agent_2d_navigation_finished():
 	target_reached = true
 	print("pigeon reached player")
 
-func _on_navigation_agent_2d_path_changed():
-	path_loaded = true
 
 func _on_timer_timeout():
-	if (path_loaded):
-		if (nav_agent.is_connected("path_changed", _on_navigation_agent_2d_path_changed)):
-			nav_agent.disconnect("path_changed", _on_navigation_agent_2d_path_changed)
-		
-		var target_pos = get_next_pos()
-		var tween = get_tree().create_tween()
-		# move pigeon to new pos
-		tween.tween_property($".", "position", target_pos, hop_travel_speed)
-		
-		# hop animation
-		$AnimationPlayer.play("bird_hop")
-		face_direction(position.x, target_pos.x, sprite)
-		
-		# restart hop timer to random time
-		hop_timer.start(randf_range(min_hop_interval, max_hop_interval))
+	var target_pos = get_next_pos()
+	var tween = get_tree().create_tween()
+	# move pigeon to new pos
+	tween.tween_property($".", "position", target_pos, hop_travel_speed)
+	
+	# hop animation
+	$AnimationPlayer.play("bird_hop")
+	face_direction(position.x, target_pos.x, sprite)
+	
+	# restart hop timer to random time
+	hop_timer.start(randf_range(min_hop_interval, max_hop_interval))
 
 
 # face correct directions, assuming facing right is default

@@ -10,40 +10,41 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc353"]
 radius = 132.242
 
-[sub_resource type="Animation" id="Animation_8mfs8"]
-resource_name = "seagull_hop"
+[sub_resource type="Animation" id="Animation_yobeu"]
+resource_name = "bird_hop"
 length = 0.1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("SeagullImage:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(2.595, 0), Vector2(2.595, -10), Vector2(2.595, 0)]
+"values": [Vector2(0, 0), Vector2(0, -500), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkj5f"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjvxj"]
 _data = {
-"seagull_hop": SubResource("Animation_8mfs8")
+"bird_hop": SubResource("Animation_yobeu")
 }
 
 [node name="Seagull" type="Area2D"]
-position = Vector2(0, -5)
 script = ExtResource("1_ftxqo")
 player_stats = ExtResource("2_qrg2w")
 max_time_before_hop = 2
 max_hop_distance = 20
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.595, 0)
+[node name="SeagullImage" type="Sprite2D" parent="."]
+position = Vector2(-2, 0)
 scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_jpumt")
+flip_h = true
+region_rect = Rect2(4.81653, 15.2998, 1164.07, 1168.7)
 
 [node name="SeagullCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oaswq")
@@ -58,7 +59,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vkj5f")
+"": SubResource("AnimationLibrary_sjvxj")
 }
 
 [connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]

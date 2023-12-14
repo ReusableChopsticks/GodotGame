@@ -1,3 +1,5 @@
+@tool
+
 # The seagull locks onto the player if they get too close
 # Then it flies to the player's last position in a straight line
 # and overshoots a little to make it look natural
@@ -8,6 +10,7 @@
 extends Area2D
 
 @onready var sprite: Sprite2D = $SeagullImage
+@onready var orienter: Node
 
 @export var attack_travel_time: float = 2
 @export var attack_extra_distance_percentage: float = 0.5
@@ -21,8 +24,9 @@ var hop_time: float = 0.1
 # to avoid seagull continuously locking on to player
 var is_attacking: bool = false
 
-func _process(_delta):
-	pass
+
+func _ready():
+	orienter = get_node("SpriteOrienter")
 
 # For a character body 2d
 func _on_detect_area_body_entered(body):
@@ -39,6 +43,7 @@ func _on_detect_area_body_entered(body):
 func _on_detect_area_area_entered(_area):
 	pass
 
+
 func fly_towards_player():
 	var tween = get_tree().create_tween().set_parallel(false)
 	tween.connect("finished", on_attack_finished)
@@ -48,11 +53,12 @@ func fly_towards_player():
 	var target_pos = player_stats.player_pos + extra_flight
 	
 	# face correct direction
-	face_direction(position.x, target_pos.x, sprite, false)
+	orienter.face_direction(position.x, target_pos.x, sprite, false)
 	
 	# Make seagull fly to target pos with tween
 	tween.tween_property($".", "position", target_pos, attack_travel_time).set_trans(Tween.TRANS_QUAD)
-	
+
+
 func on_attack_finished():
 	is_attacking = false
 
@@ -69,24 +75,32 @@ func hop_random_direction():
 	$AnimationPlayer.play("bird_hop")
 	var tween = get_tree().create_tween()
 	tween.tween_property($".", "position", target_pos, hop_time).set_trans(Tween.TRANS_QUAD)
-	face_direction(position.x, target_pos.x, sprite, false)
-	
+	orienter.face_direction(position.x, target_pos.x, sprite, false)
 	
 	# restart hop timer
 	$HopTimer.start(randf() * max_time_before_hop)
+
 
 # hop every time the timer runs out
 func _on_hop_timer_timeout():
 	if !is_attacking:
 		hop_random_direction()
 
-# face correct directions, assuming facing right is default
-func face_direction(curr_x_pos: float, target_x_pos: float, entity_sprite: Sprite2D, initial_facing_right: bool = true) -> void:
-	# TODO: MAKE THIS INTO FUNCTION
-	# currenty copy and pasted in seagull.
-	# make a base enemy, seagull and pigeon should inherit from it
-	if (curr_x_pos - target_x_pos < 0):
-		# if entity moving right, face right
-		entity_sprite.flip_h = !initial_facing_right
-	else:
-		entity_sprite.flip_h = initial_facing_right
+## face correct directions, assuming facing right is default
+#func face_direction(curr_x_pos: float, target_x_pos: float, entity_sprite: Sprite2D, initial_facing_right: bool = true) -> void:
+	## TODO: MAKE THIS INTO FUNCTION
+	## currenty copy and pasted in seagull.
+	## make a base enemy, seagull and pigeon should inherit from it
+	#if (curr_x_pos - target_x_pos < 0):
+		## if entity moving right, face right
+		#entity_sprite.flip_h = !initial_facing_right
+	#else:
+		#entity_sprite.flip_h = initial_facing_right
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	
+	if get_node("SpriteOrienter") == null:
+		warnings.append("Entity requires a SpriteOrienter scene component")
+	
+	return warnings

@@ -1,8 +1,12 @@
+@tool
+
 extends Area2D
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var hop_timer: Timer = $HopTimer
 @onready var sprite: Sprite2D = $PigeonImage
+@onready var orienter: Node
+
 
 @export var player_stats: Resource
 # how fast the pigeon hops from one point to another
@@ -17,9 +21,9 @@ extends Area2D
 
 var target_reached = false
 
-
 func _ready():
 	call_deferred("navigation_setup")
+	orienter = get_node("SpriteOrienter")
 
 func navigation_setup():
 	# you need this line to wait for NavigationServer2D to sync (first physics frame)
@@ -52,26 +56,24 @@ func _on_navigation_agent_2d_navigation_finished():
 
 
 func _on_timer_timeout():
-	var target_pos = get_next_pos()
-	var tween = get_tree().create_tween()
-	# move pigeon to new pos
-	tween.tween_property($".", "position", target_pos, hop_travel_speed)
-	
-	# hop animation
-	$AnimationPlayer.play("bird_hop")
-	face_direction(position.x, target_pos.x, sprite)
-	
-	# restart hop timer to random time
-	hop_timer.start(randf_range(min_hop_interval, max_hop_interval))
+	if not Engine.is_editor_hint():
+		var target_pos = get_next_pos()
+		var tween = get_tree().create_tween()
+		# move pigeon to new pos
+		tween.tween_property($".", "position", target_pos, hop_travel_speed)
+		
+		# hop animation
+		$AnimationPlayer.play("bird_hop")
+		orienter.face_direction(position.x, target_pos.x, sprite)
+		
+		# restart hop timer to random time
+		hop_timer.start(randf_range(min_hop_interval, max_hop_interval))
 
 
-# face correct directions, assuming facing right is default
-func face_direction(curr_x_pos: float, target_x_pos: float, entity_sprite: Sprite2D, initial_facing_right: bool = true) -> void:
-	# TODO: MAKE THIS INTO FUNCTION
-	# currenty copy and pasted in seagull.
-	# make a base enemy, seagull and pigeon should inherit from it
-	if (curr_x_pos - target_x_pos < 0):
-		# if entity moving right, face right
-		entity_sprite.flip_h = !initial_facing_right
-	else:
-		entity_sprite.flip_h = initial_facing_right
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	
+	if get_node("SpriteOrienter") == null:
+		warnings.append("Entity requires a SpriteOrienter scene component")
+	
+	return warnings

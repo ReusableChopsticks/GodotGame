@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://3jmw8j03fhjf" path="res://scenes/enemies/pigeon.png" id="1_8f0p4"]
 [ext_resource type="Script" path="res://scenes/enemies/pigeon.gd" id="1_ybx6o"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_alw6l"]
-[ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_5j108"]
+[ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_bhp16"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twe53"]
 
@@ -30,7 +30,6 @@ _data = {
 }
 
 [node name="Pigeon" type="Area2D"]
-position = Vector2(89.7415, -160.863)
 script = ExtResource("1_ybx6o")
 player_stats = ExtResource("2_alw6l")
 
@@ -47,14 +46,14 @@ avoidance_enabled = true
 radius = 100.0
 
 [node name="HopTimer" type="Timer" parent="."]
-wait_time = 0.589845
+wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_vkj5f")
 }
 
-[node name="SpriteOrienter" parent="." instance=ExtResource("4_5j108")]
+[node name="SpriteOrienter" parent="." instance=ExtResource("4_bhp16")]
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_path_changed"]

@@ -47,7 +47,7 @@ avoidance_enabled = true
 radius = 100.0
 
 [node name="HopTimer" type="Timer" parent="."]
-wait_time = 0.589845
+wait_time = 0.44544
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -57,5 +57,4 @@ libraries = {
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_5j108")]
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
-[connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_path_changed"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_timer_timeout"]

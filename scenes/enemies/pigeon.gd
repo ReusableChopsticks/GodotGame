@@ -22,8 +22,9 @@ extends Area2D
 var target_reached = false
 
 func _ready():
-	call_deferred("navigation_setup")
-	orienter = get_node("SpriteOrienter")
+	if not Engine.is_editor_hint():
+		call_deferred("navigation_setup")
+		orienter = get_node("SpriteOrienter")
 
 func navigation_setup():
 	# you need this line to wait for NavigationServer2D to sync (first physics frame)

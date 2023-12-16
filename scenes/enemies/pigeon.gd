@@ -1,6 +1,7 @@
 @tool
 
-extends Area2D
+#extends Area2D
+extends CharacterBody2D
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var hop_timer: Timer = $HopTimer
@@ -20,6 +21,7 @@ extends Area2D
 @export var pos_variance: int = 10
 
 var target_reached = false
+
 
 func _ready():
 	if not Engine.is_editor_hint():

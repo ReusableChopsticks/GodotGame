@@ -7,20 +7,17 @@
 #	- what if seagull overshoots and goes out of bounds?
 #		- Make it respawn somewhere else out of camera view?
 
-extends Area2D
+extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $SeagullImage
 @onready var orienter: Node
-
 @export var attack_travel_time: float = 2
 @export var attack_extra_distance_percentage: float = 0.5
 @export var player_stats: Resource
-
 @export var max_time_before_hop: int = 1
 @export var max_hop_distance: int = 5
 # how long it takes to hop from one point to another
 var hop_time: float = 0.1
-
 # to avoid seagull continuously locking on to player
 var is_attacking: bool = false
 

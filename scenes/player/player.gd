@@ -15,6 +15,7 @@ var throw_distance
 @export var starting_throw_distance = 5
 @export var throw_grow_distance = 5
 @export var player_stats: Resource
+@export var enemies: Node
 
 var speed
 
@@ -26,15 +27,18 @@ func _ready():
 	speed = base_speed
 	player_stats.player_pos = position
 	dir_facing = Vector2.DOWN
-
+	
+	GlobalSignals.player_hit.connect(on_player_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed
-	move_and_slide()
+	var collision = move_and_slide()
+	#if collision:
+		#print(collision.to_string())
 	
-	# Set the player pos in stats resource to be accessed by other nodes (like enemies)
+	# Set the player pos in stats resource to be accessed by other nodes
 	player_stats.player_pos = position
 	
 	#var velocity = Vector2.ZERO
@@ -72,9 +76,12 @@ func _process(_delta):
 	if Input.is_action_pressed("take_photo"):
 		if is_camera_out:
 			camera_taking.emit()
-		
-	
-	
+
+
+func on_player_hit(body):
+	print("ouch!!! hit by " + body.name)
+
+
 	
 func _on_body_entered(_body):
 	#hide() # Player disappears after being hit.

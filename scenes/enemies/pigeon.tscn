@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dit5w5w4jygsn"]
+[gd_scene load_steps=9 format=3 uid="uid://dit5w5w4jygsn"]
 
 [ext_resource type="Texture2D" uid="uid://3jmw8j03fhjf" path="res://scenes/enemies/pigeon.png" id="1_8f0p4"]
 [ext_resource type="Script" path="res://scenes/enemies/pigeon.gd" id="1_ybx6o"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_alw6l"]
 [ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_5j108"]
+[ext_resource type="PackedScene" uid="uid://spfhp68ent5f" path="res://scenes/enemies/components/hurtbox_component.tscn" id="5_lku6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twe53"]
 
@@ -29,13 +30,14 @@ _data = {
 "bird_hop": SubResource("Animation_qq7np")
 }
 
-[node name="Pigeon" type="Area2D"]
-position = Vector2(89.7415, -160.863)
+[node name="Pigeon" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_ybx6o")
 player_stats = ExtResource("2_alw6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_twe53")
+disabled = true
 
 [node name="PigeonImage" type="Sprite2D" parent="."]
 position = Vector2(2.595, 0)
@@ -55,6 +57,8 @@ libraries = {
 }
 
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_5j108")]
+
+[node name="Hitbox" parent="." instance=ExtResource("5_lku6k")]
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_timer_timeout"]

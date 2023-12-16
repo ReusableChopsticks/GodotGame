@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=8 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
 [ext_resource type="PackedScene" uid="uid://byc3q31dfxkfl" path="res://scenes/player/player.tscn" id="2_atl8d"]
+[ext_resource type="PackedScene" uid="uid://mdopbnrtajdc" path="res://scenes/enemies/child_enemy/child_enemy.tscn" id="2_d7snn"]
 [ext_resource type="PackedScene" uid="uid://dit5w5w4jygsn" path="res://scenes/enemies/pigeon.tscn" id="3_2qq1g"]
 [ext_resource type="PackedScene" uid="uid://mkfqrm438dw1" path="res://scenes/enemies/seagull.tscn" id="3_j2x8c"]
 [ext_resource type="PackedScene" uid="uid://bdy2oabwtmogw" path="res://scenes/lunch/lunch.tscn" id="4_70h26"]
@@ -29,7 +30,7 @@ position = Vector2(420, 408)
 position = Vector2(426, 166)
 
 [node name="Pigeon" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(383, 220)
+position = Vector2(419, 217)
 
 [node name="Pigeon2" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(206, 262)
@@ -43,8 +44,12 @@ position = Vector2(334, 180)
 [node name="Pigeon5" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(490, 286)
 
+[node name="ChildEnemy" parent="Enemies" instance=ExtResource("2_d7snn")]
+position = Vector2(637, 248)
+scale = Vector2(0.09, 0.09)
+
 [node name="Player" parent="." instance=ExtResource("2_atl8d")]
-position = Vector2(481, 237)
+position = Vector2(665, 270)
 throw_grow_distance = 1
 
 [node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]

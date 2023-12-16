@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://mkfqrm438dw1"]
+[gd_scene load_steps=10 format=3 uid="uid://mkfqrm438dw1"]
 
 [ext_resource type="Script" path="res://scenes/enemies/seagull.gd" id="1_ftxqo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_qrg2w"]
 [ext_resource type="Texture2D" uid="uid://bkp3tumpdkxeq" path="res://scenes/enemies/seagull_sprite.png" id="3_jpumt"]
 [ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_ced8g"]
+[ext_resource type="PackedScene" uid="uid://spfhp68ent5f" path="res://scenes/enemies/components/hurtbox_component.tscn" id="5_73l0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oaswq"]
 radius = 6.0
@@ -33,11 +34,11 @@ _data = {
 "bird_hop": SubResource("Animation_yobeu")
 }
 
-[node name="Seagull" type="Area2D"]
+[node name="Seagull" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ftxqo")
 player_stats = ExtResource("2_qrg2w")
-max_time_before_hop = 2
-max_hop_distance = 20
 metadata/_edit_group_ = true
 
 [node name="SeagullImage" type="Sprite2D" parent="."]
@@ -49,8 +50,10 @@ region_rect = Rect2(4.81653, 15.2998, 1164.07, 1168.7)
 
 [node name="SeagullCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oaswq")
+disabled = true
 
 [node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="DetectCollider" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_lc353")
@@ -64,6 +67,8 @@ libraries = {
 }
 
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_ced8g")]
+
+[node name="Hitbox" parent="." instance=ExtResource("5_73l0m")]
 
 [connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

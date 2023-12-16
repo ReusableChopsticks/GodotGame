@@ -78,5 +78,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	
 	if get_node("SpriteOrienter") == null:
 		warnings.append("Entity requires a SpriteOrienter scene component")
-	
+	if get_node("EnemyHitboxComponent") == null:
+		warnings.append("Entity requires a EnemyHitboxComponent")
 	return warnings

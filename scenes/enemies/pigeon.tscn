@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/pigeon.gd" id="1_ybx6o"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_alw6l"]
 [ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_5j108"]
-[ext_resource type="PackedScene" uid="uid://spfhp68ent5f" path="res://scenes/enemies/components/hurtbox_component.tscn" id="5_lku6k"]
+[ext_resource type="PackedScene" uid="uid://spfhp68ent5f" path="res://scenes/enemies/components/enemy_hitbox_component.tscn" id="5_lku6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_twe53"]
 
@@ -58,7 +58,7 @@ libraries = {
 
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_5j108")]
 
-[node name="Hitbox" parent="." instance=ExtResource("5_lku6k")]
+[node name="EnemyHitboxComponent" parent="." instance=ExtResource("5_lku6k")]
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_timer_timeout"]

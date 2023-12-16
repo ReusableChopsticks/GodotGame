@@ -1,30 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://mdopbnrtajdc"]
+[gd_scene load_steps=7 format=3 uid="uid://mdopbnrtajdc"]
 
 [ext_resource type="Texture2D" uid="uid://ccchiqum4de2x" path="res://scenes/enemies/child_enemy/main.png" id="1_8emnr"]
 [ext_resource type="Script" path="res://scenes/enemies/child_enemy/child_enemy.gd" id="1_wrljx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_j0ouk"]
-radius = 60.2993
+[ext_resource type="PackedScene" uid="uid://spfhp68ent5f" path="res://scenes/enemies/components/enemy_hitbox_component.tscn" id="3_fjelb"]
+[ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_l2b3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sbyyl"]
+radius = 69.029
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qkjq"]
+radius = 58.0775
 
 [node name="ChildEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
+velocity = Vector2(-0.719107, 0.694899)
 script = ExtResource("1_wrljx")
+speed = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8emnr")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_j0ouk")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sbyyl")
-disabled = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="EnemyHitboxComponent" parent="." instance=ExtResource("3_fjelb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent"]
+shape = SubResource("CircleShape2D_6qkjq")
+
+[node name="SpriteOrienter" parent="." instance=ExtResource("4_l2b3w")]

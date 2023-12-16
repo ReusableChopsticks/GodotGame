@@ -1,15 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://spfhp68ent5f"]
+[gd_scene load_steps=2 format=3 uid="uid://spfhp68ent5f"]
 
 [ext_resource type="Script" path="res://scenes/enemies/components/enemy_hitbox_component.gd" id="1_2b4ft"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qnhb0"]
-radius = 5.0
 
 [node name="EnemyHitboxComponent" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_2b4ft")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qnhb0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

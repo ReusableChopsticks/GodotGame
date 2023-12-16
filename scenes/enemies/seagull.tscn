@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mkfqrm438dw1"]
+[gd_scene load_steps=11 format=3 uid="uid://mkfqrm438dw1"]
 
 [ext_resource type="Script" path="res://scenes/enemies/seagull.gd" id="1_ftxqo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_qrg2w"]
@@ -10,7 +10,7 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc353"]
-radius = 132.242
+radius = 101.005
 
 [sub_resource type="Animation" id="Animation_yobeu"]
 resource_name = "bird_hop"
@@ -33,6 +33,9 @@ tracks/0/keys = {
 _data = {
 "bird_hop": SubResource("Animation_yobeu")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmxpi"]
+radius = 5.09902
 
 [node name="Seagull" type="CharacterBody2D"]
 collision_layer = 2
@@ -69,6 +72,9 @@ libraries = {
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_ced8g")]
 
 [node name="EnemyHitboxComponent" parent="." instance=ExtResource("5_73l0m")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent"]
+shape = SubResource("CircleShape2D_tmxpi")
 
 [connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

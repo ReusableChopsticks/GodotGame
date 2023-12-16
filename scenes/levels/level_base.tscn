@@ -45,8 +45,28 @@ position = Vector2(334, 180)
 position = Vector2(490, 286)
 
 [node name="ChildEnemy" parent="Enemies" instance=ExtResource("2_d7snn")]
-position = Vector2(637, 248)
+position = Vector2(610, 275)
 scale = Vector2(0.09, 0.09)
+velocity = Vector2(-0.986885, -0.161426)
+metadata/_edit_group_ = true
+
+[node name="ChildEnemy2" parent="Enemies" instance=ExtResource("2_d7snn")]
+position = Vector2(610, 275)
+scale = Vector2(0.09, 0.09)
+velocity = Vector2(-0.986885, -0.161426)
+metadata/_edit_group_ = true
+
+[node name="ChildEnemy3" parent="Enemies" instance=ExtResource("2_d7snn")]
+position = Vector2(610, 275)
+scale = Vector2(0.09, 0.09)
+velocity = Vector2(-0.986885, -0.161426)
+metadata/_edit_group_ = true
+
+[node name="ChildEnemy4" parent="Enemies" instance=ExtResource("2_d7snn")]
+position = Vector2(610, 275)
+scale = Vector2(0.09, 0.09)
+velocity = Vector2(-0.986885, -0.161426)
+metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_atl8d")]
 position = Vector2(665, 270)

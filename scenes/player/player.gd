@@ -29,6 +29,13 @@ func _ready():
 	dir_facing = Vector2.DOWN
 	
 	GlobalSignals.player_hit.connect(on_player_hit)
+	
+	# Dummy eat setup
+	GlobalSignals.stats_updated.connect(on_stats_updated)
+	#$LunchProgressBar.value = player_stats.lunch_remaining
+	$EatProgressBar.value = 0
+	player_stats.lunch_remaining = 100
+	GlobalSignals.stats_updated.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -69,7 +76,20 @@ func _process(delta):
 		throw_distance = starting_throw_distance
 	
 	if Input.is_action_just_pressed("eat"):
-		eat.emit(moving)
+		#TODO: this is a dummy implementation
+		# JULIUS replace this with your minigame
+		#eat.emit(moving)
+		pass
+	if Input.is_action_pressed("eat"):
+		var hold_time = 1
+		var eat_value = 10
+		$EatProgressBar.value += delta * (100/hold_time)
+		if $EatProgressBar.value >= 100:
+			$EatProgressBar.value = 0
+			player_stats.lunch_remaining -= eat_value
+	if Input.is_action_just_released("eat"):
+		$EatProgressBar.value = 0
+	
 	if Input.is_action_pressed("ready_camera"):
 		is_camera_out = !is_camera_out
 		camera_out.emit(is_camera_out)
@@ -80,9 +100,11 @@ func _process(delta):
 
 func on_player_hit(body):
 	print("ouch!!! hit by " + body.name)
+	player_stats.lunch_remaining -= 5
 
+func on_stats_updated():
+	$LunchProgressBar.value = player_stats.lunch_remaining
 
-	
 func _on_body_entered(_body):
 	#hide() # Player disappears after being hit.
 	hit.emit()

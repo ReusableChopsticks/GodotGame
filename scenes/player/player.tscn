@@ -38,3 +38,28 @@ limit_top = -100
 limit_right = 860
 limit_bottom = 480
 limit_smoothed = true
+
+[node name="LunchProgressBar" type="ProgressBar" parent="."]
+offset_left = -12.0
+offset_top = 11.0
+offset_right = 83.0
+offset_bottom = 38.0
+scale = Vector2(0.26, 0.26)
+
+[node name="EatProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0.301961, 1)
+offset_left = -12.0
+offset_top = 30.0
+offset_right = 83.0
+offset_bottom = 57.0
+scale = Vector2(0.26, 0.26)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -17.0
+offset_top = 20.0
+offset_right = 202.0
+offset_bottom = 69.0
+scale = Vector2(0.16, 0.16)
+text = "Hold E/X to eat
+(DUMMY IMPLEMENTATION)"
+horizontal_alignment = 1

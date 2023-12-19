@@ -41,13 +41,6 @@ func _ready():
 func _process(delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed
-	var collision = move_and_slide()
-	#if collision:
-		#print(collision.to_string())
-	
-	# Set the player pos in stats resource to be accessed by other nodes
-	player_stats.player_pos = position
-	
 	#var velocity = Vector2.ZERO
 	#if Input.is_action_pressed("move_up"):
 		#velocity.y -= 1
@@ -83,6 +76,7 @@ func _process(delta):
 	if Input.is_action_pressed("eat"):
 		var hold_time = 2
 		var eat_value = 10
+		velocity = Vector2.ZERO
 		$EatProgressBar.value += delta * (100/hold_time)
 		if $EatProgressBar.value >= 100:
 			$EatProgressBar.value = 0
@@ -100,6 +94,10 @@ func _process(delta):
 		if is_camera_out:
 			camera_taking.emit()
 
+	
+	var collision = move_and_slide()
+	# Set the player pos in stats resource to be accessed by other nodes
+	player_stats.player_pos = position
 
 func on_player_hit(body):
 	print("ouch!!! hit by " + body.name)

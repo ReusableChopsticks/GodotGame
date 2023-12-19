@@ -47,23 +47,18 @@ position = Vector2(681, 124)
 
 [node name="Pigeon" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(419, 217)
-detect_player_radius = null
 
 [node name="Pigeon2" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(206, 262)
-detect_player_radius = null
 
 [node name="Pigeon3" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(314, 250)
-detect_player_radius = null
 
 [node name="Pigeon4" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(334, 180)
-detect_player_radius = null
 
 [node name="Pigeon5" parent="Enemies" instance=ExtResource("3_2qq1g")]
 position = Vector2(490, 286)
-detect_player_radius = null
 
 [node name="ChildEnemy" parent="Enemies" instance=ExtResource("2_d7snn")]
 position = Vector2(610, 275)

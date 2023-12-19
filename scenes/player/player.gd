@@ -81,12 +81,15 @@ func _process(delta):
 		#eat.emit(moving)
 		pass
 	if Input.is_action_pressed("eat"):
-		var hold_time = 1
+		var hold_time = 2
 		var eat_value = 10
 		$EatProgressBar.value += delta * (100/hold_time)
 		if $EatProgressBar.value >= 100:
 			$EatProgressBar.value = 0
-			player_stats.lunch_remaining -= eat_value
+			# only eat if you still have lunch
+			if player_stats.lunch_remaining > 0:
+				player_stats.lunch_remaining -= eat_value
+				player_stats.lunch_eaten += eat_value
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
 	

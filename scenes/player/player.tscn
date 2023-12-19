@@ -19,6 +19,7 @@ animations = [{
 radius = 65.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 5
 script = ExtResource("1_jyobo")
 player_stats = ExtResource("2_r3ti7")
 

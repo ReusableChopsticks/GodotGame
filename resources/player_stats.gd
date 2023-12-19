@@ -7,11 +7,14 @@ class_name PlayerStats
 # in the design doc. These values follow that
 const start_lunch_value: int = 100
 # actual amount of lunch eaten by player
-var lunch_eaten: int
+var lunch_eaten: int:
+	set(value):
+		lunch_eaten = value
+		GlobalSignals.stats_updated.emit()
 # the amount of lunch player currently has left
 var lunch_remaining: int:
 	set(value):
-		GlobalSignals.stats_updated.emit()
 		if value <= 0:
 			GlobalSignals.lunch_finished.emit()
 		lunch_remaining = value
+		GlobalSignals.stats_updated.emit()

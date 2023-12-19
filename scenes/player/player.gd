@@ -102,6 +102,7 @@ func _process(delta):
 func on_player_hit(body):
 	print("ouch!!! hit by " + body.name)
 	player_stats.lunch_remaining -= 5
+	$EatProgressBar.value = 0
 
 func on_stats_updated():
 	$LunchProgressBar.value = player_stats.lunch_remaining

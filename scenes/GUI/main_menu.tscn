@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpnbo65bapbe2"]
+[gd_scene load_steps=17 format=3 uid="uid://bpnbo65bapbe2"]
 
 [ext_resource type="FontFile" uid="uid://4b6sb0whmuk5" path="res://scenes/GUI/False 3d.ttf" id="1_qacbe"]
 [ext_resource type="Script" path="res://scenes/GUI/main_menu.gd" id="1_tmbn6"]
+[ext_resource type="Texture2D" uid="uid://cnp7n1pk0kyhw" path="res://scenes/levels/18756869098_92ca86ff79_b.jpg" id="2_e7s2f"]
 [ext_resource type="Script" path="res://scenes/GUI/Bird Crime.gd" id="2_ku7nf"]
 [ext_resource type="Texture2D" uid="uid://1p2lhrjop3lb" path="res://scenes/GUI/_101232673_angry.jpg" id="3_d4cgo"]
+[ext_resource type="Script" path="res://scenes/GUI/StartButton.gd" id="5_56rwv"]
+[ext_resource type="AudioStream" uid="uid://bt6kqbve81uwa" path="res://audio/Seagull - Sound Effect.mp3" id="5_xlyoj"]
+[ext_resource type="AudioStream" uid="uid://cnx1tiuspuauf" path="res://audio/people screaming - sound effect.mp3" id="5_yvo02"]
+[ext_resource type="Script" path="res://scenes/GUI/QuitButton.gd" id="6_r8jw3"]
+[ext_resource type="AudioStream" uid="uid://cjddx22ld3lyp" path="res://audio/Dove laughing and cooing..mp3" id="7_f7ft8"]
 
 [sub_resource type="Gradient" id="Gradient_gj7vl"]
 colors = PackedColorArray(0.653453, 0.418343, 0.873714, 1, 1, 1, 0.909804, 1)
@@ -72,6 +78,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_8hppt")
+
+[node name="1875686909892Ca86Ff79B" type="Sprite2D" parent="."]
+modulate = Color(0.411765, 0, 0, 0.360784)
+position = Vector2(539.75, 355)
+scale = Vector2(1.07576, 1.17908)
+texture = ExtResource("2_e7s2f")
 
 [node name="Bird Crime" type="Label" parent="."]
 layout_mode = 0
@@ -145,12 +157,31 @@ theme_override_constants/separation = 5
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "START"
+script = ExtResource("5_56rwv")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+script = ExtResource("6_r8jw3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7jl3h")
 }
+
+[node name="ScreamingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yvo02")
+volume_db = -4.145
+autoplay = true
+
+[node name="SeagullAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xlyoj")
+volume_db = 4.763
+autoplay = true
+
+[node name="DoveAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f7ft8")
+autoplay = true
+
+[connection signal="button_down" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_button_down"]

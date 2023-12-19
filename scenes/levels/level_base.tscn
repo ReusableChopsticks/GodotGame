@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=10 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
 [ext_resource type="PackedScene" uid="uid://byc3q31dfxkfl" path="res://scenes/player/player.tscn" id="2_atl8d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdy2oabwtmogw" path="res://scenes/lunch/lunch.tscn" id="4_70h26"]
 [ext_resource type="PackedScene" uid="uid://dsubgwle1qnp0" path="res://scenes/crumbs/crumb_thrower.tscn" id="5_ohson"]
 [ext_resource type="PackedScene" uid="uid://bf0yusii3k8qo" path="res://scenes/GUI/game_ui.tscn" id="8_40yfw"]
+[ext_resource type="AudioStream" uid="uid://b5euyn72511u2" path="res://audio/Mastodon - Blood And Thunder.mp3" id="9_ntuv1"]
 
 [node name="LevelBase" type="Node2D"]
 
@@ -88,6 +89,10 @@ food_type = 1
 [node name="CrumbThrower" parent="." instance=ExtResource("5_ohson")]
 
 [node name="GameUI" parent="." instance=ExtResource("8_40yfw")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ntuv1")
+autoplay = true
 
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
 [connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]

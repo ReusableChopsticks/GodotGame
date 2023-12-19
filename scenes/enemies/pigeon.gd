@@ -63,7 +63,7 @@ func _on_navigation_agent_2d_navigation_finished():
 func _on_timer_timeout():
 	if not Engine.is_editor_hint():
 		nav_agent.target_position = player_stats.player_pos
-		print(nav_agent.distance_to_target())
+		#print(nav_agent.distance_to_target())
 		if nav_agent.distance_to_target() > detect_player_radius:
 			# hop randomly if player out of detection radius
 			hop_random_direction()

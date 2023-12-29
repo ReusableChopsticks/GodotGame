@@ -8,6 +8,7 @@ signal game_started
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = true
 	anim.play("move_into_screen")
 	$CrossingSignal.visible = false
 	
@@ -27,3 +28,4 @@ func _process(delta):
 
 func emit_game_start():
 	game_started.emit()
+	get_tree().paused = false

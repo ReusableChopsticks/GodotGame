@@ -216,6 +216,7 @@ grow_vertical = 2
 script = ExtResource("1_606td")
 
 [node name="dim" type="ColorRect" parent="."]
+process_mode = 3
 modulate = Color(0.0156863, 0, 0.431373, 0)
 layout_mode = 1
 anchors_preset = 15

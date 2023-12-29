@@ -4,11 +4,7 @@
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_m6raa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41cw"]
-font_size = 21
-font_color = Color(0, 1, 1, 1)
-outline_color = Color(0.160784, 1, 0.972549, 1)
-shadow_size = 7
-shadow_color = Color(0, 0, 0, 1)
+font_size = 60
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -21,10 +17,10 @@ text = "Lunch Eaten: "
 label_settings = SubResource("LabelSettings_n41cw")
 
 [node name="LunchEatenNumber" type="Label" parent="."]
-offset_left = 151.0
+offset_left = 267.0
 offset_top = 15.0
-offset_right = 255.0
-offset_bottom = 45.0
+offset_right = 371.0
+offset_bottom = 79.0
 text = "0%
 "
 label_settings = SubResource("LabelSettings_n41cw")

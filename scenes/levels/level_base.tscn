@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=12 format=3 uid="uid://b6bltyd5sc24d"]
 
+[ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_dup2c"]
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
 [ext_resource type="PackedScene" uid="uid://byc3q31dfxkfl" path="res://scenes/player/player.tscn" id="2_atl8d"]
 [ext_resource type="PackedScene" uid="uid://mdopbnrtajdc" path="res://scenes/enemies/child_enemy/child_enemy.tscn" id="2_d7snn"]
@@ -9,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dsubgwle1qnp0" path="res://scenes/crumbs/crumb_thrower.tscn" id="5_ohson"]
 [ext_resource type="PackedScene" uid="uid://bf0yusii3k8qo" path="res://scenes/GUI/game_ui.tscn" id="8_40yfw"]
 [ext_resource type="AudioStream" uid="uid://b5euyn72511u2" path="res://audio/Mastodon - Blood And Thunder.mp3" id="9_ntuv1"]
+[ext_resource type="PackedScene" uid="uid://ds7csor0ms35o" path="res://scenes/GUI/tutorial_screen.tscn" id="11_5516x"]
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_dup2c")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_ibaco")
@@ -26,7 +29,7 @@ layer_1/tile_data = PackedInt32Array(655376, 196610, 11, 720912, 196610, 12, 655
 position = Vector2(210, 204)
 
 [node name="Seagull2" parent="Enemies" instance=ExtResource("3_j2x8c")]
-position = Vector2(420, 408)
+position = Vector2(694, 284)
 
 [node name="Seagull3" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(426, 166)
@@ -35,46 +38,49 @@ position = Vector2(426, 166)
 position = Vector2(581, 175)
 
 [node name="Seagull5" parent="Enemies" instance=ExtResource("3_j2x8c")]
-position = Vector2(522, 232)
+position = Vector2(523, 208)
 
 [node name="Seagull6" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(222, 106)
 
 [node name="Seagull7" parent="Enemies" instance=ExtResource("3_j2x8c")]
-position = Vector2(252, 313)
+position = Vector2(65, 302)
 
 [node name="Seagull8" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(681, 124)
 
 [node name="Pigeon" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(419, 217)
+position = Vector2(131, 112)
+detect_player_radius = 700
 
 [node name="Pigeon2" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(206, 262)
+position = Vector2(47, 151)
+detect_player_radius = 700
 
 [node name="Pigeon3" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(314, 250)
+position = Vector2(33, 216)
+detect_player_radius = 700
 
 [node name="Pigeon4" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(334, 180)
+position = Vector2(606, 128)
 
 [node name="Pigeon5" parent="Enemies" instance=ExtResource("3_2qq1g")]
-position = Vector2(490, 286)
+position = Vector2(713, 198)
 
 [node name="ChildEnemy" parent="Enemies" instance=ExtResource("2_d7snn")]
-position = Vector2(610, 275)
+position = Vector2(718, 129)
 scale = Vector2(0.09, 0.09)
 velocity = Vector2(-0.986885, -0.161426)
 metadata/_edit_group_ = true
 
 [node name="ChildEnemy2" parent="Enemies" instance=ExtResource("2_d7snn")]
-position = Vector2(610, 275)
+position = Vector2(90, 138)
 scale = Vector2(0.09, 0.09)
 velocity = Vector2(-0.986885, -0.161426)
 metadata/_edit_group_ = true
 
 [node name="ChildEnemy3" parent="Enemies" instance=ExtResource("2_d7snn")]
-position = Vector2(610, 275)
+position = Vector2(39.9999, 268)
 scale = Vector2(0.09, 0.09)
 velocity = Vector2(-0.986885, -0.161426)
 metadata/_edit_group_ = true
@@ -94,6 +100,13 @@ food_type = 1
 stream = ExtResource("9_ntuv1")
 autoplay = true
 
+[node name="StartText" type="CanvasLayer" parent="."]
+
+[node name="Tutorial Screen" parent="StartText" instance=ExtResource("11_5516x")]
+process_mode = 3
+size_flags_horizontal = 4
+
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
 [connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]
 [connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]
+[connection signal="game_started" from="StartText/Tutorial Screen" to="." method="_on_tutorial_screen_game_started"]

@@ -87,7 +87,7 @@ func _process(delta):
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
 	
-	if Input.is_action_pressed("ready_camera"):
+	if Input.is_action_just_pressed("ready_camera"):
 		is_camera_out = !is_camera_out
 		camera_out.emit(is_camera_out)
 	if Input.is_action_pressed("take_photo"):
@@ -97,6 +97,7 @@ func _process(delta):
 	
 	var collision = move_and_slide()
 	# Set the player pos in stats resource to be accessed by other nodes
+	player_stats.player_facing = dir_facing
 	player_stats.player_pos = position
 
 func on_player_hit(body):

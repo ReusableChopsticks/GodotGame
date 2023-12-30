@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=14 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_dup2c"]
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bdy2oabwtmogw" path="res://scenes/lunch/lunch.tscn" id="4_70h26"]
 [ext_resource type="PackedScene" uid="uid://dsubgwle1qnp0" path="res://scenes/crumbs/crumb_thrower.tscn" id="5_ohson"]
 [ext_resource type="PackedScene" uid="uid://bf0yusii3k8qo" path="res://scenes/GUI/game_ui.tscn" id="8_40yfw"]
+[ext_resource type="PackedScene" uid="uid://o4h0mxrrv31" path="res://scenes/PictureTaker/picture_taker.tscn" id="8_n4d0s"]
 [ext_resource type="AudioStream" uid="uid://b5euyn72511u2" path="res://audio/Mastodon - Blood And Thunder.mp3" id="9_ntuv1"]
+[ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="9_pbc3h"]
 [ext_resource type="PackedScene" uid="uid://ds7csor0ms35o" path="res://scenes/GUI/tutorial_screen.tscn" id="11_5516x"]
 
 [node name="LevelBase" type="Node2D"]
@@ -92,6 +94,9 @@ throw_grow_distance = 1
 [node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]
 food_type = 1
 
+[node name="PictureTaker" parent="Player" instance=ExtResource("8_n4d0s")]
+player_stats = ExtResource("9_pbc3h")
+
 [node name="CrumbThrower" parent="." instance=ExtResource("5_ohson")]
 
 [node name="GameUI" parent="." instance=ExtResource("8_40yfw")]
@@ -101,11 +106,14 @@ stream = ExtResource("9_ntuv1")
 autoplay = true
 
 [node name="StartText" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Tutorial Screen" parent="StartText" instance=ExtResource("11_5516x")]
 process_mode = 3
 size_flags_horizontal = 4
 
+[connection signal="camera_out" from="Player" to="Player/PictureTaker" method="_on_player_camera_out"]
+[connection signal="camera_taking" from="Player" to="Player/PictureTaker" method="_on_player_camera_taking"]
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
 [connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]
 [connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]

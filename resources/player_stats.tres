@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_65o7a")
-health = 0
 player_pos = Vector2(0, 0)
+player_facing = Vector2(0, 0)

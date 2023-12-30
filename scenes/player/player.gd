@@ -9,6 +9,8 @@ var dir_facing
 var screen_size
 var is_camera_out
 var throw_distance
+var is_invincible: bool = false
+@onready var i_frames_timer: Timer = $InvincibilityTimer
 
 @export var base_speed: int = 100
 @export var moving = false
@@ -103,10 +105,13 @@ func _process(delta):
 	player_stats.player_facing = dir_facing
 	player_stats.player_pos = position
 
+
 func on_player_hit(body):
-	print("ouch!!! hit by " + body.name)
-	player_stats.lunch_remaining -= 5
-	$EatProgressBar.value = 0
+	if not is_invincible:
+		print("ouch!!! hit by " + body.name)
+		player_stats.lunch_remaining -= 5
+		$EatProgressBar.value = 0
+		i_frames_timer.start()
 
 func on_stats_updated():
 	$LunchProgressBar.value = player_stats.lunch_remaining
@@ -120,3 +125,7 @@ func _on_body_entered(_body):
 
 func _on_lunch_eating_speed_percentage(percent):
 	speed = base_speed * percent/100
+
+
+func _on_invincibility_timer_timeout():
+	is_invincible = false

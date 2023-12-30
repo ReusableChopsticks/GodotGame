@@ -66,3 +66,9 @@ scale = Vector2(0.16, 0.16)
 text = "Hold E/X to eat
 (DUMMY IMPLEMENTATION)"
 horizontal_alignment = 1
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

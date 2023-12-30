@@ -37,7 +37,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmxpi"]
 radius = 5.09902
 
-[node name="Seagull" type="CharacterBody2D"]
+[node name="Seagull" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ftxqo")
@@ -72,6 +72,7 @@ libraries = {
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_ced8g")]
 
 [node name="EnemyHitboxComponent" parent="." instance=ExtResource("5_73l0m")]
+damage_rate = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent"]
 shape = SubResource("CircleShape2D_tmxpi")

@@ -33,7 +33,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3xhj"]
 radius = 7.0
 
-[node name="Pigeon" type="CharacterBody2D"]
+[node name="Pigeon" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_ybx6o")
 player_stats = ExtResource("2_alw6l")
@@ -63,6 +63,7 @@ libraries = {
 [node name="SpriteOrienter" parent="." instance=ExtResource("4_5j108")]
 
 [node name="EnemyHitboxComponent" parent="." instance=ExtResource("5_lku6k")]
+damage_rate = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitboxComponent"]
 shape = SubResource("CircleShape2D_i3xhj")

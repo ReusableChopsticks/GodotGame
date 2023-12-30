@@ -206,19 +206,13 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_h6jeb"]
 font_size = 90
 
-[node name="Tutorial Screen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Tutorial Screen" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_606td")
 
 [node name="dim" type="ColorRect" parent="."]
 process_mode = 3
 modulate = Color(0.0156863, 0, 0.431373, 0)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -233,7 +227,6 @@ libraries = {
 
 [node name="any key" type="Label" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -251,7 +244,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="tutorial" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -266,7 +258,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="instructions" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -305,7 +297,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -309.0
-offset_top = -229.0
+offset_top = -222.0
 offset_right = 309.0
 offset_bottom = 229.0
 grow_horizontal = 2
@@ -315,7 +307,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_jdg2w")
 
 [node name="CrossingSignal" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

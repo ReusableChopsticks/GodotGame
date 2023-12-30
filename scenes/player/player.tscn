@@ -41,6 +41,7 @@ limit_bottom = 480
 limit_smoothed = true
 
 [node name="LunchProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -12.0
 offset_top = 11.0
 offset_right = 83.0
@@ -50,12 +51,13 @@ scale = Vector2(0.26, 0.26)
 [node name="EatProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0, 1, 0.301961, 1)
 offset_left = -12.0
-offset_top = 30.0
+offset_top = -18.0
 offset_right = 83.0
-offset_bottom = 57.0
+offset_bottom = 9.0
 scale = Vector2(0.26, 0.26)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -17.0
 offset_top = 20.0
 offset_right = 202.0

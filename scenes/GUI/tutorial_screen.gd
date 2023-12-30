@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var instruction_anim_finished = false
 var intro_started = false

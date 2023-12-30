@@ -105,16 +105,11 @@ player_stats = ExtResource("9_pbc3h")
 stream = ExtResource("9_ntuv1")
 autoplay = true
 
-[node name="StartText" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Tutorial Screen" parent="StartText" instance=ExtResource("11_5516x")]
-process_mode = 3
-size_flags_horizontal = 4
+[node name="Tutorial Screen" parent="." instance=ExtResource("11_5516x")]
 
 [connection signal="camera_out" from="Player" to="Player/PictureTaker" method="_on_player_camera_out"]
 [connection signal="camera_taking" from="Player" to="Player/PictureTaker" method="_on_player_camera_taking"]
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
 [connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]
 [connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]
-[connection signal="game_started" from="StartText/Tutorial Screen" to="." method="_on_tutorial_screen_game_started"]
+[connection signal="game_started" from="Tutorial Screen" to="." method="_on_tutorial_screen_game_started"]

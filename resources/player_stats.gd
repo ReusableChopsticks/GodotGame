@@ -15,6 +15,7 @@ var lunch_eaten: int:
 var lunch_remaining: int:
 	set(value):
 		if value <= 0:
-			GlobalSignals.lunch_finished.emit()
+			GlobalSignals.game_over.emit()
+			
 		lunch_remaining = value
 		GlobalSignals.stats_updated.emit()

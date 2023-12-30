@@ -29,7 +29,7 @@ window/stretch/aspect="expand"
 [gui]
 
 theme/custom="res://scenes/GUI/main_skin/main_theme.tres"
-theme/custom_font="res://scenes/GUI/main_skin/False 3d.ttf"
+theme/custom_font="res://scenes/GUI/main_skin/Melbourne_bold.otf"
 
 [input]
 

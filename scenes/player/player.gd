@@ -77,13 +77,16 @@ func _process(delta):
 		var hold_time = 2
 		var eat_value = 10
 		velocity = Vector2.ZERO
+		# keep track of hold time
 		$EatProgressBar.value += delta * (100/hold_time)
 		if $EatProgressBar.value >= 100:
 			$EatProgressBar.value = 0
 			# only eat if you still have lunch
 			if player_stats.lunch_remaining > 0:
-				player_stats.lunch_remaining -= eat_value
-				player_stats.lunch_eaten += eat_value
+				# make sure 
+				var eaten = min(player_stats.lunch_remaining, eat_value)
+				player_stats.lunch_remaining -= eaten
+				player_stats.lunch_eaten += eaten
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
 	

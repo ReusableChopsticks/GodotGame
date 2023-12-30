@@ -3,6 +3,7 @@ class_name PlayerStats
 
 
 @export var player_pos: Vector2
+@export var player_facing: Vector2
 # I wrote a proposed health/scoring system linked to how much lunch you have
 # in the design doc. These values follow that
 const start_lunch_value: int = 100

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsfdpiwj7emoy"
-path="res://.godot/imported/1x1-ffffffff.png-4d4ccff6991c1d32c903a5ced0303763.ctex"
+uid="uid://ddo6yqaeg6obg"
+path="res://.godot/imported/black_circle_scribble.png-a8f2a08a44681aba67a8cf41d60d8100.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/GUI/1x1-ffffffff.png"
-dest_files=["res://.godot/imported/1x1-ffffffff.png-4d4ccff6991c1d32c903a5ced0303763.ctex"]
+source_file="res://graphics/black_circle_scribble.png"
+dest_files=["res://.godot/imported/black_circle_scribble.png-a8f2a08a44681aba67a8cf41d60d8100.ctex"]
 
 [params]
 

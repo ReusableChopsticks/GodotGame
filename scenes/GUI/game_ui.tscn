@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenNumber.gd" id="1_dw835"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_m6raa"]
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenProgressBar.gd" id="3_076jx"]
-[ext_resource type="Texture2D" uid="uid://dcunm012j5r8" path="res://scenes/GUI/Circle_double_border_black_filling_white.svg.png" id="4_e1a61"]
+[ext_resource type="Texture2D" uid="uid://dcunm012j5r8" path="res://graphics/Circle_double_border_black_filling_white.svg.png" id="4_e1a61"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41cw"]
 font_size = 32

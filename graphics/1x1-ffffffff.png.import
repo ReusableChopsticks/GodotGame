@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcunm012j5r8"
-path="res://.godot/imported/Circle_double_border_black_filling_white.svg.png-0254a461990dc9e48f5f1aeeb76bacf4.ctex"
+uid="uid://dsfdpiwj7emoy"
+path="res://.godot/imported/1x1-ffffffff.png-2f50e1613be3bd572fac23bd0edf6d26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/GUI/Circle_double_border_black_filling_white.svg.png"
-dest_files=["res://.godot/imported/Circle_double_border_black_filling_white.svg.png-0254a461990dc9e48f5f1aeeb76bacf4.ctex"]
+source_file="res://graphics/1x1-ffffffff.png"
+dest_files=["res://.godot/imported/1x1-ffffffff.png-2f50e1613be3bd572fac23bd0edf6d26.ctex"]
 
 [params]
 

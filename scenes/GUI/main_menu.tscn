@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/GUI/StartButton.gd" id="5_56rwv"]
 [ext_resource type="AudioStream" uid="uid://bt6kqbve81uwa" path="res://audio/Seagull - Sound Effect.mp3" id="5_xlyoj"]
 [ext_resource type="AudioStream" uid="uid://cnx1tiuspuauf" path="res://audio/people screaming - sound effect.mp3" id="5_yvo02"]
-[ext_resource type="Script" path="res://scenes/GUI/QuitButton.gd" id="6_r8jw3"]
+[ext_resource type="Script" path="res://scenes/GUI/ButtonStyle.gd" id="6_r8jw3"]
 [ext_resource type="AudioStream" uid="uid://cjddx22ld3lyp" path="res://audio/Dove laughing and cooing..mp3" id="7_f7ft8"]
 
 [sub_resource type="Gradient" id="Gradient_gj7vl"]

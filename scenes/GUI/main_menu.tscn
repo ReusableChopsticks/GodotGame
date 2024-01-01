@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://scenes/GUI/StartButton.gd" id="5_56rwv"]
 [ext_resource type="AudioStream" uid="uid://bt6kqbve81uwa" path="res://audio/Seagull - Sound Effect.mp3" id="5_xlyoj"]
 [ext_resource type="AudioStream" uid="uid://cnx1tiuspuauf" path="res://audio/people screaming - sound effect.mp3" id="5_yvo02"]
-[ext_resource type="Script" path="res://scenes/GUI/ButtonStyle.gd" id="6_r8jw3"]
 [ext_resource type="AudioStream" uid="uid://cjddx22ld3lyp" path="res://audio/Dove laughing and cooing..mp3" id="7_f7ft8"]
+[ext_resource type="Script" path="res://scenes/GUI/QuitButton.gd" id="7_hq7u3"]
 
 [sub_resource type="Gradient" id="Gradient_gj7vl"]
 colors = PackedColorArray(0.653453, 0.418343, 0.873714, 1, 1, 0, 0.111831, 1)
@@ -162,7 +162,7 @@ script = ExtResource("5_56rwv")
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
-script = ExtResource("6_r8jw3")
+script = ExtResource("7_hq7u3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -184,4 +184,4 @@ stream = ExtResource("7_f7ft8")
 autoplay = true
 
 [connection signal="button_down" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_button_down"]
-[connection signal="button_down" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_button_down"]
+[connection signal="button_up" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_button_up"]

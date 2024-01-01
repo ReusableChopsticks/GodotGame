@@ -29,6 +29,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		call_deferred("navigation_setup")
 		orienter = get_node("SpriteOrienter")
+		GlobalSignals.game_over.connect(on_game_over)
 
 func navigation_setup():
 	# you need this line to wait for NavigationServer2D to sync (first physics frame)
@@ -107,3 +108,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if get_node("EnemyHitboxComponent") == null:
 		warnings.append("Entity requires a EnemyHitboxComponent")
 	return warnings
+
+func on_game_over(cause):
+	# make it so pigeons ignore player after lunch is finished
+	detect_player_radius = 0

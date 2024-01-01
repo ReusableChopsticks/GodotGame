@@ -10,6 +10,7 @@ var screen_size
 var is_camera_out
 var throw_distance
 var is_invincible: bool = false
+var disable_player_control: bool = false
 @onready var i_frames_timer: Timer = $InvincibilityTimer
 
 @export var base_speed: int = 100
@@ -34,10 +35,13 @@ func _ready():
 	
 	# Dummy eat setup
 	GlobalSignals.stats_updated.connect(on_stats_updated)
-	#$LunchProgressBar.value = player_stats.lunch_remaining
 	$EatProgressBar.value = 0
 	player_stats.lunch_remaining = 100
 	GlobalSignals.stats_updated.emit()
+	
+	# Game over behaviour setup
+	GlobalSignals.game_over.connect(on_game_over)
+	disable_player_control = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -87,8 +91,8 @@ func _process(delta):
 			if player_stats.lunch_remaining > 0:
 				# make sure 
 				var eaten = min(player_stats.lunch_remaining, eat_value)
-				player_stats.lunch_remaining -= eaten
 				player_stats.lunch_eaten += eaten
+				player_stats.lunch_remaining -= eaten
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
 	
@@ -99,6 +103,8 @@ func _process(delta):
 		if is_camera_out:
 			camera_taking.emit()
 
+	if disable_player_control:
+		velocity = Vector2.ZERO
 	
 	var collision = move_and_slide()
 	# Set the player pos in stats resource to be accessed by other nodes
@@ -129,3 +135,10 @@ func _on_lunch_eating_speed_percentage(percent):
 
 func _on_invincibility_timer_timeout():
 	is_invincible = false
+	
+func on_game_over(cause):
+	disable_player_control = true
+	if cause == GlobalSignals.Game_Over_Cause.BY_EATING:
+		print("play some victory animation")
+	elif cause == GlobalSignals.Game_Over_Cause.BY_DAMAGE:
+		print("play a funny dying animation")

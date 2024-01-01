@@ -23,7 +23,10 @@ var is_attacking: bool = false
 
 
 func _ready():
-	orienter = get_node("SpriteOrienter")
+	if not Engine.is_editor_hint():
+		$DetectArea.monitoring = true
+		orienter = get_node("SpriteOrienter")
+		GlobalSignals.game_over.connect(on_game_over)
 
 # For a character body 2d
 func _on_detect_area_body_entered(body):
@@ -102,3 +105,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if get_node("EnemyHitboxComponent") == null:
 		warnings.append("Entity requires a EnemyHitboxComponent")
 	return warnings
+
+func on_game_over(cause):
+	# make so seagulls do not target player after lunch is finished
+	$DetectArea.monitoring = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2l66svymsbhn"]
+[gd_scene load_steps=8 format=3 uid="uid://b2l66svymsbhn"]
 
 [ext_resource type="Texture2D" uid="uid://ddo6yqaeg6obg" path="res://graphics/black_circle_scribble.png" id="1_4m46i"]
 [ext_resource type="Script" path="res://scenes/GUI/game_over_screen.gd" id="1_p0h60"]
+[ext_resource type="Texture2D" uid="uid://cdydxbs3c7tqb" path="res://graphics/dripping_blood.png" id="2_0kaqk"]
 [ext_resource type="Script" path="res://scenes/GUI/ButtonStyle.gd" id="2_3bdgy"]
 [ext_resource type="Script" path="res://scenes/GUI/RestartButton.gd" id="3_2ub8l"]
 
@@ -14,6 +15,13 @@ font_size = 48
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_p0h60")
+
+[node name="DrippingBlood" type="TextureRect" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 600.0
+grow_horizontal = 2
+texture = ExtResource("2_0kaqk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 14
@@ -56,7 +64,8 @@ offset_right = 20.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "QUIT"
+text = "Main
+Menu"
 label_settings = SubResource("LabelSettings_ii0hi")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -79,7 +88,7 @@ offset_right = 109.5
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "RESTART"
+text = "Restart"
 label_settings = SubResource("LabelSettings_ii0hi")
 horizontal_alignment = 1
 vertical_alignment = 1

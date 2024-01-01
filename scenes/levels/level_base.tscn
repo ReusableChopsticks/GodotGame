@@ -34,7 +34,7 @@ position = Vector2(210, 204)
 position = Vector2(694, 284)
 
 [node name="Seagull3" parent="Enemies" instance=ExtResource("3_j2x8c")]
-position = Vector2(426, 166)
+position = Vector2(592, 294)
 
 [node name="Seagull4" parent="Enemies" instance=ExtResource("3_j2x8c")]
 position = Vector2(581, 175)
@@ -82,13 +82,13 @@ velocity = Vector2(-0.986885, -0.161426)
 metadata/_edit_group_ = true
 
 [node name="ChildEnemy3" parent="Enemies" instance=ExtResource("2_d7snn")]
-position = Vector2(39.9999, 268)
+position = Vector2(33, 132)
 scale = Vector2(0.09, 0.09)
 velocity = Vector2(-0.986885, -0.161426)
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_atl8d")]
-position = Vector2(376, 319)
+position = Vector2(375, 231)
 throw_grow_distance = 1
 
 [node name="Lunch" parent="Player" instance=ExtResource("4_70h26")]

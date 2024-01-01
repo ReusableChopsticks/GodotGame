@@ -156,11 +156,13 @@ theme_override_constants/separation = 5
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuitButton")
 text = "START"
 script = ExtResource("5_56rwv")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
 text = "QUIT"
 script = ExtResource("7_hq7u3")
 

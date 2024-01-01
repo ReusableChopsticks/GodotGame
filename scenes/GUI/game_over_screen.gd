@@ -5,6 +5,7 @@ extends CanvasLayer
 func _ready():
 	#visible = false
 	GlobalSignals.game_over.connect(on_game_over)
+	$VBoxContainer/HBoxContainer/RestartButton.grab_focus()
 
 func on_game_over(cause):
 	visible = true

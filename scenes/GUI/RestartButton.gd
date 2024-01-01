@@ -1,9 +1,10 @@
-extends TextureButton
+extends Button
 
 @export var col_fade_time: float = 0.1
 @export var is_clickable: bool = true
 
 func _ready():
+	$".".grab_focus()
 	if not is_clickable:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 

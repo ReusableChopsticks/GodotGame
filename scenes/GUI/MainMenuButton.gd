@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 @export var col_fade_time: float = 0.1
 @export var is_clickable: bool = true

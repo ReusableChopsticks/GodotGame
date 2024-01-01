@@ -1,107 +1,94 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2l66svymsbhn"]
+[gd_scene load_steps=5 format=3 uid="uid://b2l66svymsbhn"]
 
-[ext_resource type="Texture2D" uid="uid://ddo6yqaeg6obg" path="res://graphics/black_circle_scribble.png" id="1_4m46i"]
 [ext_resource type="Script" path="res://scenes/GUI/game_over_screen.gd" id="1_p0h60"]
-[ext_resource type="Texture2D" uid="uid://cdydxbs3c7tqb" path="res://graphics/dripping_blood.png" id="2_0kaqk"]
-[ext_resource type="Script" path="res://scenes/GUI/ButtonStyle.gd" id="2_3bdgy"]
+[ext_resource type="Texture2D" uid="uid://b6bc2vekvebva" path="res://scenes/GUI/letter_grades/s_rank.png" id="2_jnb5q"]
 [ext_resource type="Script" path="res://scenes/GUI/RestartButton.gd" id="3_2ub8l"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_m0hhv"]
-font_size = 128
-font_color = Color(1, 0.478431, 0.478431, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ii0hi"]
-font_size = 48
+[ext_resource type="Script" path="res://scenes/GUI/MainMenuButton.gd" id="4_8gt8w"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_p0h60")
 
-[node name="DrippingBlood" type="TextureRect" parent="."]
-anchors_preset = 10
+[node name="DimSizing" type="MarginContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 600.0
-grow_horizontal = 2
-texture = ExtResource("2_0kaqk")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -45.5
-offset_bottom = 45.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="GameOverLabel" type="Label" parent="VBoxContainer"]
+[node name="BackgroundDim" type="ColorRect" parent="DimSizing"]
 layout_mode = 2
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_m0hhv")
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(0, 0, 0, 0.835294)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="QuitButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-modulate = Color(0.988235, 0.988235, 0.988235, 1)
-layout_mode = 2
-focus_neighbor_right = NodePath("../RestartButton")
-texture_normal = ExtResource("1_4m46i")
-stretch_mode = 0
-script = ExtResource("2_3bdgy")
-
-[node name="QuitLabel" type="Label" parent="VBoxContainer/HBoxContainer/QuitButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 8.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Main
-Menu"
-label_settings = SubResource("LabelSettings_ii0hi")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
-[node name="RestartButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../QuitButton")
-texture_normal = ExtResource("1_4m46i")
+
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.62
+theme_override_constants/separation = 15
+
+[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "LUNCH FINISHED"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+layout_mode = 2
+text = "Time:"
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+layout_mode = 2
+text = "Eaten:"
+
+[node name="GradeContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/GradeContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_jnb5q")
+expand_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GradeContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RestartButton" type="Button" parent="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
 script = ExtResource("3_2ub8l")
 
-[node name="RestartLabel" type="Label" parent="VBoxContainer/HBoxContainer/RestartButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -109.5
-offset_top = -32.0
-offset_right = 109.5
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Restart"
-label_settings = SubResource("LabelSettings_ii0hi")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="MainMenuButton" type="Button" parent="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+script = ExtResource("4_8gt8w")
 
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/QuitButton" to="VBoxContainer/HBoxContainer/QuitButton" method="_on_button_up"]
-[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/QuitButton" to="VBoxContainer/HBoxContainer/QuitButton" method="_on_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/QuitButton" to="VBoxContainer/HBoxContainer/QuitButton" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/QuitButton" to="VBoxContainer/HBoxContainer/QuitButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/QuitButton" to="VBoxContainer/HBoxContainer/QuitButton" method="_on_mouse_exited"]
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/RestartButton" to="VBoxContainer/HBoxContainer/RestartButton" method="_on_button_up"]
-[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/RestartButton" to="VBoxContainer/HBoxContainer/RestartButton" method="_on_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/RestartButton" to="VBoxContainer/HBoxContainer/RestartButton" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/RestartButton" to="VBoxContainer/HBoxContainer/RestartButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/RestartButton" to="VBoxContainer/HBoxContainer/RestartButton" method="_on_mouse_exited"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" method="_on_button_up"]
+[connection signal="focus_entered" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/RestartButton" method="_on_mouse_exited"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" method="_on_button_up"]
+[connection signal="focus_entered" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" to="MarginContainer/HBoxContainer/GradeContainer2/HBoxContainer/MainMenuButton" method="_on_mouse_exited"]

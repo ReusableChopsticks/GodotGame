@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://byc3q31dfxkfl"]
+[gd_scene load_steps=8 format=3 uid="uid://byc3q31dfxkfl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jyobo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_r3ti7"]
@@ -18,10 +18,63 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltp45"]
 radius = 65.0
 
+[sub_resource type="Animation" id="Animation_6gm1p"]
+resource_name = "dash"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_invincible"
+}, {
+"args": [false],
+"method": &"set_invincible"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_dash"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.52549), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5idc"]
+_data = {
+"dash": SubResource("Animation_6gm1p")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 5
 script = ExtResource("1_jyobo")
 player_stats = ExtResource("2_r3ti7")
+dash_velocity_multiplier = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -71,4 +124,14 @@ horizontal_alignment = 1
 wait_time = 0.2
 one_shot = true
 
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j5idc")
+}
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

@@ -5,13 +5,17 @@ signal throw(player_pos, throw_pos)
 signal camera_out(is_camera_out:bool)
 signal camera_taking
 
+var speed
 var dir_facing
 var screen_size
 var is_camera_out
 var throw_distance
 var is_invincible: bool = false
 var disable_player_control: bool = false
+var is_dashing: bool = false
+var can_dash: bool = true
 @onready var i_frames_timer: Timer = $InvincibilityTimer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 @export var base_speed: int = 100
 @export var moving = false
@@ -19,8 +23,8 @@ var disable_player_control: bool = false
 @export var throw_grow_distance = 5
 @export var player_stats: Resource
 @export var enemies: Node
+@export var dash_velocity_multiplier: float = 3
 
-var speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -102,7 +106,13 @@ func _process(delta):
 	if Input.is_action_pressed("take_photo"):
 		if is_camera_out:
 			camera_taking.emit()
-
+	
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dash()
+	
+	if is_dashing:
+		velocity = dir_facing * speed * dash_velocity_multiplier
+	
 	if disable_player_control:
 		velocity = Vector2.ZERO
 	
@@ -132,7 +142,6 @@ func _on_body_entered(_body):
 func _on_lunch_eating_speed_percentage(percent):
 	speed = base_speed * percent/100
 
-
 func _on_invincibility_timer_timeout():
 	is_invincible = false
 	
@@ -142,3 +151,18 @@ func on_game_over(cause):
 		print("play some victory animation")
 	elif cause == GlobalSignals.Game_Over_Cause.BY_DAMAGE:
 		print("play a funny dying animation")
+
+func dash():
+	is_dashing = true
+	can_dash = false
+	anim_player.play("dash")
+
+func finish_dash():
+	is_dashing = false
+	$DashCooldownTimer.start()
+
+func set_invincible(value: bool):
+	is_invincible = value
+
+func _on_dash_cooldown_timer_timeout():
+	can_dash = true

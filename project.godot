@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LunchBulletHell"
-run/main_scene="res://scenes/levels/level_base.tscn"
+run/main_scene="res://scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

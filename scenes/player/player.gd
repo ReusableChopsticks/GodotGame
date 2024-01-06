@@ -103,7 +103,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ready_camera"):
 		is_camera_out = !is_camera_out
 		camera_out.emit(is_camera_out)
-	if Input.is_action_pressed("take_photo"):
+	if Input.is_action_just_pressed("take_photo"):
 		if is_camera_out:
 			camera_taking.emit()
 	

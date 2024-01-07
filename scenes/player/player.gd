@@ -21,7 +21,7 @@ var can_dash: bool = true
 @export var moving = false
 @export var starting_throw_distance = 5
 @export var throw_grow_distance = 5
-@export var player_stats: Resource
+@export var player_stats: PlayerStats
 @export var enemies: Node
 @export var dash_velocity_multiplier: float = 3
 
@@ -127,7 +127,7 @@ func _process(delta):
 
 func on_player_hit(body):
 	if not is_invincible:
-		print("ouch!!! hit by " + body.name)
+		#print("ouch!!! hit by " + body.name)
 		player_stats.lunch_remaining -= 5
 		$EatProgressBar.value = 0
 		i_frames_timer.start()

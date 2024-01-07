@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2l66svymsbhn"]
+[gd_scene load_steps=12 format=3 uid="uid://b2l66svymsbhn"]
 
 [ext_resource type="Script" path="res://scenes/GUI/game_over_screen.gd" id="1_p0h60"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_g2kvi"]
@@ -12,11 +12,11 @@
 bg_color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [sub_resource type="Animation" id="Animation_cgvd6"]
-resource_name = "grade_shuffle"
+resource_name = "show_grade"
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node/show_grade")
+tracks/0/path = NodePath("Audio/show_grade")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,9 +99,13 @@ tracks/3/keys = {
 "values": [Color(0.282353, 0.282353, 0.282353, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8lwy7"]
+resource_name = "show_stats"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8dphu"]
 _data = {
-"grade_shuffle": SubResource("Animation_cgvd6")
+"show_grade": SubResource("Animation_cgvd6"),
+"show_stats": SubResource("Animation_8lwy7")
 }
 
 [node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("grade_sprite")]
@@ -144,18 +148,18 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.62
 theme_override_constants/separation = 15
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+[node name="FinishedLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "LUNCH FINISHED"
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+[node name="TimeLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
 layout_mode = 2
-text = "Time:"
+text = "Time: "
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
+[node name="EatenLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
 layout_mode = 2
-text = "Eaten:"
+text = "Eaten: "
 
 [node name="GradeContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -197,11 +201,11 @@ libraries = {
 "": SubResource("AnimationLibrary_8dphu")
 }
 
-[node name="Node" type="Node" parent="."]
+[node name="Audio" type="Node" parent="."]
 
-[node name="show_grade" type="AudioStreamPlayer" parent="Node"]
+[node name="show_grade" type="AudioStreamPlayer" parent="Audio"]
 
-[node name="shuffle_grade" type="AudioStreamPlayer" parent="Node"]
+[node name="shuffle_grade" type="AudioStreamPlayer" parent="Audio"]
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" method="_on_button_up"]
 [connection signal="focus_entered" from="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" method="_on_focus_entered"]

@@ -28,3 +28,4 @@ var lunch_remaining: int:
 # tracks how the last bit of lunch was finished
 # play different animations based on how game ends
 var game_over_cause
+var total_time: float = 0

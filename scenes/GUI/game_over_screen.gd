@@ -3,6 +3,9 @@ extends CanvasLayer
 @export var grade_sprite: Sprite2D
 @export var stats: PlayerStats
 @onready var anim: AnimationPlayer = $AnimationPlayer
+#@onready var time_label = $MarginContainer/HBoxContainer/StatsContainer/TimeLabel
+
+var shuffle_frequency: float = 0.1
 
 # dictionary of threshholds for each grade
 var grades = {
@@ -20,7 +23,9 @@ func _ready():
 
 func on_game_over(cause):
 	visible = true
-	anim.play("grade_shuffle")
+	$MarginContainer/HBoxContainer/StatsContainer/TimeLabel.text += "%.2f" % stats.total_time
+	$MarginContainer/HBoxContainer/StatsContainer/EatenLabel.text += str(stats.lunch_eaten) + "%"
+	anim.play("show_grade")
 
 func show_letter_grade():
 	# this works only for the specific sprite sheet i found
@@ -38,3 +43,5 @@ func show_letter_grade():
 		grade_sprite.frame = 6
 	else:
 		grade_sprite.frame = 8
+
+

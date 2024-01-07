@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/GUI/MainMenuButton.gd" id="4_8gt8w"]
 [ext_resource type="AudioStream" uid="uid://cpg8bm1haiuxn" path="res://scenes/GUI/letter_grades/1763_button-click-05.mp3" id="6_3fbbr"]
 [ext_resource type="AudioStream" uid="uid://dc63vcbgsal2" path="res://scenes/GUI/letter_grades/1001_metal-button-01.mp3" id="7_tm0dw"]
+[ext_resource type="Animation" uid="uid://diq5gpmum71at" path="res://scenes/GUI/letter_grades/random_nums.res" id="8_5wcxc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlukp"]
 bg_color = Color(0.317647, 0.317647, 0.317647, 1)
@@ -99,13 +100,10 @@ tracks/3/keys = {
 "values": [Color(0.282353, 0.282353, 0.282353, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_8lwy7"]
-resource_name = "show_stats"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8dphu"]
 _data = {
-"show_grade": SubResource("Animation_cgvd6"),
-"show_stats": SubResource("Animation_8lwy7")
+"random_nums": ExtResource("8_5wcxc"),
+"show_grade": SubResource("Animation_cgvd6")
 }
 
 [node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("grade_sprite")]
@@ -204,8 +202,10 @@ libraries = {
 [node name="Audio" type="Node" parent="."]
 
 [node name="show_grade" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_tm0dw")
 
 [node name="shuffle_grade" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_3fbbr")
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" method="_on_button_up"]
 [connection signal="focus_entered" from="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" to="MarginContainer/HBoxContainer/GradeContainer/HBoxContainer/RestartButton" method="_on_focus_entered"]

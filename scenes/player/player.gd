@@ -145,13 +145,9 @@ func _on_body_entered(_body):
 func _on_lunch_eating_speed_percentage(percent):
 	speed = base_speed * percent/100
 	
-func on_game_over(cause):
+func on_game_over():
 	disable_player_control = true
 	$CollisionShape2D.set_deferred("disabled", true)
-	if cause == GlobalSignals.Game_Over_Cause.BY_EATING:
-		print("play some victory animation")
-	elif cause == GlobalSignals.Game_Over_Cause.BY_DAMAGE:
-		print("play a funny dying animation")
 
 func dash():
 	is_dashing = true

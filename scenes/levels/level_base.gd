@@ -14,7 +14,7 @@ func _process(delta):
 	if not game_over:
 		stats.total_time += delta
 
-func on_game_over(_cause):
+func on_game_over():
 	game_over = true
 
 func _on_tutorial_screen_game_started():

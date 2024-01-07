@@ -109,6 +109,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("Entity requires a EnemyHitboxComponent")
 	return warnings
 
-func on_game_over(cause):
+func on_game_over():
 	# make it so pigeons ignore player after lunch is finished
 	detect_player_radius = 0

@@ -12,7 +12,6 @@ const start_lunch_value: int = 100
 var lunch_eaten: int:
 	set(value):
 		lunch_eaten = value
-		game_over_cause = GlobalSignals.Game_Over_Cause.BY_EATING
 		GlobalSignals.stats_updated.emit()
 # the amount of lunch player currently has left
 # detects game_over and emits signal
@@ -20,12 +19,8 @@ var lunch_eaten: int:
 var lunch_remaining: int:
 	set(value):
 		if value <= 0:
-			GlobalSignals.game_over.emit(game_over_cause)
-			
+			GlobalSignals.game_over.emit()
 		lunch_remaining = value
-		game_over_cause = GlobalSignals.Game_Over_Cause.BY_DAMAGE
 		GlobalSignals.stats_updated.emit()
-# tracks how the last bit of lunch was finished
-# play different animations based on how game ends
-var game_over_cause
+
 var total_time: float = 0

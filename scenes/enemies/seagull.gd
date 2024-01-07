@@ -109,3 +109,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 func on_game_over():
 	# make so seagulls do not target player after lunch is finished
 	$DetectArea.monitoring = false
+
+func play_attack_sound():
+	$AudioStreamPlayer2D.play(0.1)

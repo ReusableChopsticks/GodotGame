@@ -14,6 +14,7 @@ var is_invincible: bool = false
 var disable_player_control: bool = false
 var is_dashing: bool = false
 var can_dash: bool = true
+var game_over = false
 @onready var i_frames_timer: Timer = $InvincibilityTimer
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -21,9 +22,9 @@ var can_dash: bool = true
 @export var moving = false
 @export var starting_throw_distance = 5
 @export var throw_grow_distance = 5
-@export var player_stats: PlayerStats
 @export var enemies: Node
 @export var dash_velocity_multiplier: float = 3
+@export var player_stats: PlayerStats
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,15 +33,18 @@ func _ready():
 	throw_distance = starting_throw_distance
 	is_camera_out = false
 	speed = base_speed
-	player_stats.player_pos = position
 	dir_facing = Vector2.DOWN
+	game_over = false
+	
+	player_stats.player_pos = position
+	player_stats.lunch_eaten = 0
+	player_stats.lunch_remaining = player_stats.start_lunch_value
+	$EatProgressBar.value = 0
 	
 	GlobalSignals.player_hit.connect(on_player_hit)
 	
 	# Dummy eat setup
 	GlobalSignals.stats_updated.connect(on_stats_updated)
-	$EatProgressBar.value = 0
-	player_stats.lunch_remaining = 100
 	GlobalSignals.stats_updated.emit()
 	
 	# Game over behaviour setup
@@ -91,7 +95,8 @@ func _process(delta):
 		var eat_value = 10
 		velocity = Vector2.ZERO
 		# keep track of hold time
-		$EatProgressBar.value += delta * (100/hold_time)
+		if not game_over:
+			$EatProgressBar.value += delta * (100/hold_time)
 		if $EatProgressBar.value >= 100:
 			$EatProgressBar.value = 0
 			# only eat if you still have lunch
@@ -110,7 +115,7 @@ func _process(delta):
 		if is_camera_out:
 			camera_taking.emit()
 	
-	if Input.is_action_just_pressed("dash") and can_dash:
+	if Input.is_action_just_pressed("dash") and can_dash and not game_over:
 		dash()
 	
 	if is_dashing:
@@ -131,6 +136,9 @@ func on_player_hit(body):
 		player_stats.lunch_remaining -= 5
 		$EatProgressBar.value = 0
 		i_frames_timer.start()
+		
+		if "play_attack_sound" in body:
+			body.play_attack_sound()
 
 func on_stats_updated():
 	$LunchProgressBar.value = player_stats.lunch_remaining
@@ -148,6 +156,7 @@ func _on_lunch_eating_speed_percentage(percent):
 func on_game_over():
 	disable_player_control = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	game_over = true
 
 func dash():
 	is_dashing = true
@@ -156,7 +165,7 @@ func dash():
 
 func finish_dash():
 	is_dashing = false
-	$DashCooldownTimer.start()
+	$DashCooldownTimer.start(player_stats.dash_recharge_time)
 
 func set_invincible(value: bool):
 	is_invincible = value
@@ -166,3 +175,4 @@ func _on_invincibility_timer_timeout():
 	
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
+	GlobalSignals.dash_recharged.emit()

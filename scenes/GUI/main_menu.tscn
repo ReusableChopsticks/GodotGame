@@ -173,12 +173,10 @@ libraries = {
 
 [node name="ScreamingAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yvo02")
-volume_db = -4.145
 autoplay = true
 
 [node name="SeagullAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_xlyoj")
-volume_db = 7.264
 autoplay = true
 
 [node name="DoveAudio" type="AudioStreamPlayer" parent="."]

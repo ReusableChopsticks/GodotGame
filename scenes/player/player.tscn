@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://byc3q31dfxkfl"]
+[gd_scene load_steps=9 format=3 uid="uid://byc3q31dfxkfl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jyobo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_r3ti7"]
+[ext_resource type="Texture2D" uid="uid://c16j0qlrornq7" path="res://scenes/player/dg2kcv3-c10a0bcc-f58a-488d-ba93-6fc6ec166b02.png" id="3_cudxj"]
 [ext_resource type="Texture2D" uid="uid://bba24imwcqw6x" path="res://icon.svg" id="3_wtwyb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jpyx"]
@@ -73,10 +74,15 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 5
 script = ExtResource("1_jyobo")
-player_stats = ExtResource("2_r3ti7")
 dash_velocity_multiplier = 4.0
+player_stats = ExtResource("2_r3ti7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("3_cudxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_0jpyx")
 
@@ -104,9 +110,9 @@ scale = Vector2(0.26, 0.26)
 [node name="EatProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0, 1, 0.301961, 1)
 offset_left = -12.0
-offset_top = -18.0
+offset_top = -26.0
 offset_right = 83.0
-offset_bottom = 9.0
+offset_bottom = 26.0
 scale = Vector2(0.26, 0.26)
 
 [node name="Label" type="Label" parent="."]

@@ -24,3 +24,4 @@ var lunch_remaining: int:
 		GlobalSignals.stats_updated.emit()
 
 var total_time: float = 0
+var dash_recharge_time: float = 2.0

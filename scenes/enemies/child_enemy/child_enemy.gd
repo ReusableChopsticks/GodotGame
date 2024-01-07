@@ -64,3 +64,6 @@ func resume_running():
 	var angle = randf_range(0, 2 * PI)
 	velocity = Vector2(sin(angle), cos(angle)).normalized()
 	$FallOverTimer.start(randf_range(fall_over_interval - fall_over_variance, fall_over_interval + fall_over_variance))
+
+func play_attack_sound():
+	$AudioStreamPlayer2D.play()

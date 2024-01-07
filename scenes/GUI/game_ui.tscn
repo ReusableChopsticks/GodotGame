@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf0yusii3k8qo"]
+[gd_scene load_steps=9 format=3 uid="uid://bf0yusii3k8qo"]
 
 [ext_resource type="Script" path="res://scenes/GUI/LunchRemainingPBar.gd" id="1_b0qxd"]
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenNumber.gd" id="1_dw835"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_m6raa"]
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenProgressBar.gd" id="3_076jx"]
 [ext_resource type="Texture2D" uid="uid://dcunm012j5r8" path="res://graphics/Circle_double_border_black_filling_white.svg.png" id="4_e1a61"]
+[ext_resource type="Script" path="res://scenes/GUI/DashBar.gd" id="6_o7e4m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41cw"]
 font_size = 32
@@ -123,3 +124,22 @@ text = "0%
 label_settings = SubResource("LabelSettings_n41cw")
 script = ExtResource("1_dw835")
 stats = ExtResource("2_m6raa")
+
+[node name="DashBar" type="ProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -211.0
+offset_top = 20.0
+offset_right = -24.0
+offset_bottom = 72.0
+grow_horizontal = 0
+max_value = 2.0
+value = 0.93
+show_percentage = false
+script = ExtResource("6_o7e4m")
+stats = ExtResource("2_m6raa")
+
+[node name="Timer" type="Timer" parent="DashBar"]
+wait_time = 2.0
+one_shot = true

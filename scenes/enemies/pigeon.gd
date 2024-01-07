@@ -112,3 +112,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 func on_game_over():
 	# make it so pigeons ignore player after lunch is finished
 	detect_player_radius = 0
+
+func play_attack_sound():
+	$AudioStreamPlayer2D.play()

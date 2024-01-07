@@ -32,6 +32,7 @@ func _ready():
 	eaten_text = eaten_label.text
 	time_label.text += "----"
 	eaten_label.text += "----"
+	grade_sprite.visible = false
 
 # This is the most disgusting way to animate the text
 # but i couldn't find a better way
@@ -61,12 +62,7 @@ func _process(delta):
 			show_noise.play()
 
 func on_game_over():
-	visible = true
-	game_over = true
-	#$MarginContainer/HBoxContainer/StatsContainer/TimeLabel.text += "%.2f" % stats.total_time
-	#$MarginContainer/HBoxContainer/StatsContainer/EatenLabel.text += str(stats.lunch_eaten) + "%"
-	await get_tree().create_timer(2).timeout
-	anim.play("show_grade")
+	pass
 
 func show_letter_grade():
 	# this works only for the specific sprite sheet i found
@@ -88,3 +84,13 @@ func show_letter_grade():
 func rand_nums() -> float:
 	return randf_range(0, 500)
 	
+
+
+func _on_level_base_show_game_over_screen():
+	visible = true
+	game_over = true
+	#$MarginContainer/HBoxContainer/StatsContainer/TimeLabel.text += "%.2f" % stats.total_time
+	#$MarginContainer/HBoxContainer/StatsContainer/EatenLabel.text += str(stats.lunch_eaten) + "%"
+	await get_tree().create_timer(2).timeout
+	grade_sprite.visible = true
+	anim.play("show_grade")

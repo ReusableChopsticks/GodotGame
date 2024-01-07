@@ -46,6 +46,9 @@ func _ready():
 	# Game over behaviour setup
 	GlobalSignals.game_over.connect(on_game_over)
 	disable_player_control = false
+	
+	# enable collision
+	$CollisionShape2D.set_deferred("disabled", false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -141,12 +144,10 @@ func _on_body_entered(_body):
 
 func _on_lunch_eating_speed_percentage(percent):
 	speed = base_speed * percent/100
-
-func _on_invincibility_timer_timeout():
-	is_invincible = false
 	
 func on_game_over(cause):
 	disable_player_control = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	if cause == GlobalSignals.Game_Over_Cause.BY_EATING:
 		print("play some victory animation")
 	elif cause == GlobalSignals.Game_Over_Cause.BY_DAMAGE:
@@ -164,5 +165,8 @@ func finish_dash():
 func set_invincible(value: bool):
 	is_invincible = value
 
+func _on_invincibility_timer_timeout():
+	is_invincible = false
+	
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true

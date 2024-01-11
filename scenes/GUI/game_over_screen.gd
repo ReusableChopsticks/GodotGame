@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var time_label = $MarginContainer/HBoxContainer/StatsContainer/TimeLabel
 @onready var eaten_label = $MarginContainer/HBoxContainer/StatsContainer/EatenLabel
+@onready var pidgeon_label = $MarginContainer/HBoxContainer/StatsContainer/PidgeonLabel
+@onready var seagull_label = $MarginContainer/HBoxContainer/StatsContainer/SeagullLabel
+@onready var child_label = $MarginContainer/HBoxContainer/StatsContainer/ChildLabel
+@export var album: Album
 
 @onready var shuffle_noise = $Audio/shuffle_grade
 @onready var show_noise = $Audio/show_grade
@@ -94,3 +98,21 @@ func _on_level_base_show_game_over_screen():
 	await get_tree().create_timer(2).timeout
 	grade_sprite.visible = true
 	anim.play("show_grade")
+	await get_tree().create_timer(1.5).timeout
+	var pidgeon_count = 0
+	var seagull_count = 0
+	var child_count = 0
+	for bird in album.album.keys():
+		print(bird.name.substr(0,3))
+		if bird.name.substr(0,3) == "Pig": #cant believe i have to admit im naming them wrong
+			pidgeon_count += 1
+		if bird.name.substr(0,3) == "Sea":
+			seagull_count += 1
+		if bird.name.substr(0,3) == "Chi":
+			child_count += 1
+			
+	pidgeon_label.text += str(pidgeon_count)
+	await get_tree().create_timer(0.3).timeout
+	seagull_label.text += str(seagull_count)
+	await get_tree().create_timer(0.3).timeout
+	child_label.text += str(child_count)

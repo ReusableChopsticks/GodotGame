@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4h0mxrrv31"]
+[gd_scene load_steps=3 format=3 uid="uid://o4h0mxrrv31"]
 
 [ext_resource type="Script" path="res://scenes/PictureTaker/picture_taker.gd" id="1_t4457"]
+[ext_resource type="Resource" uid="uid://cw20gxwmi8jhx" path="res://resources/album.tres" id="2_lla81"]
 
 [node name="PictureTaker" type="Area2D"]
 script = ExtResource("1_t4457")
+album = ExtResource("2_lla81")
 
 [node name="InFrame" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -10, 70, -70, 70, 70, 0, 10)

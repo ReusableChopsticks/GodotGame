@@ -1,10 +1,13 @@
 extends Area2D
 @export var player_stats: Resource
 var in_picture = []
+@export var album: Album
+# dict used as a set
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_visible(false)
+	album.album = {}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,8 +22,10 @@ func _on_player_camera_out(is_camera_out):
 
 func _on_player_camera_taking():
 	for enemy in in_picture:
+		album.album[enemy.get_parent()] = "dummy"
 		print(enemy.get_parent().name)
 	print(in_picture.size())
+	print(album.album.size())
 	pass # Replace with function body.
 
 

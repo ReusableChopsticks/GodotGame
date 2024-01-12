@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://byc3q31dfxkfl"]
+[gd_scene load_steps=10 format=3 uid="uid://byc3q31dfxkfl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jyobo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_r3ti7"]
 [ext_resource type="Texture2D" uid="uid://c16j0qlrornq7" path="res://scenes/player/dg2kcv3-c10a0bcc-f58a-488d-ba93-6fc6ec166b02.png" id="3_cudxj"]
 [ext_resource type="Texture2D" uid="uid://bba24imwcqw6x" path="res://icon.svg" id="3_wtwyb"]
+[ext_resource type="Script" path="res://scenes/player/CameraFlash.gd" id="5_dc4ra"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jpyx"]
 animations = [{
@@ -139,5 +140,11 @@ libraries = {
 "": SubResource("AnimationLibrary_j5idc")
 }
 
+[node name="CameraFlash" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-200, -200, 200, -200, 200, 200, -200, 200)
+script = ExtResource("5_dc4ra")
+
+[connection signal="camera_taking" from="." to="CameraFlash" method="_on_player_camera_taking"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

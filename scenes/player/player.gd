@@ -26,6 +26,9 @@ var game_over = false
 @export var dash_velocity_multiplier: float = 3
 @export var player_stats: PlayerStats
 
+@export var photo_cooldown = 1
+var current_photo_cooldown = photo_cooldown
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,7 +83,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("throw"):
 		throw_distance += throw_grow_distance
-	if Input.is_action_just_released("throw"):
+	if Input.is_action_just_released("throw") && !game_over:
 		var throw_pos = global_position + (dir_facing * throw_distance)
 		throw.emit(global_position, throw_pos)
 		throw_distance = starting_throw_distance
@@ -108,11 +111,13 @@ func _process(delta):
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
 	
-	if Input.is_action_just_pressed("ready_camera"):
+	if Input.is_action_just_pressed("ready_camera") && !game_over:
 		is_camera_out = !is_camera_out
 		camera_out.emit(is_camera_out)
+	current_photo_cooldown += delta
 	if Input.is_action_just_pressed("take_photo"):
-		if is_camera_out:
+		if is_camera_out && current_photo_cooldown > photo_cooldown:
+			current_photo_cooldown = 0
 			camera_taking.emit()
 	
 	if Input.is_action_just_pressed("dash") and can_dash and not game_over:
@@ -157,6 +162,9 @@ func on_game_over():
 	disable_player_control = true
 	$CollisionShape2D.set_deferred("disabled", true)
 	game_over = true
+	is_camera_out = false
+	camera_out.emit(false)
+	
 
 func dash():
 	is_dashing = true

@@ -37,6 +37,10 @@ func _ready():
 	time_label.text += "----"
 	eaten_label.text += "----"
 	grade_sprite.visible = false
+	
+	pidgeon_label.visible = false
+	seagull_label.visible = false
+	child_label.visible = false
 
 # This is the most disgusting way to animate the text
 # but i couldn't find a better way
@@ -112,7 +116,10 @@ func _on_level_base_show_game_over_screen():
 			child_count += 1
 			
 	pidgeon_label.text += str(pidgeon_count)
+	pidgeon_label.visible = true
 	await get_tree().create_timer(0.3).timeout
 	seagull_label.text += str(seagull_count)
+	seagull_label.visible = true
 	await get_tree().create_timer(0.3).timeout
 	child_label.text += str(child_count)
+	child_label.visible = true

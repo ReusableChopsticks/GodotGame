@@ -38,3 +38,4 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	in_picture.erase(area)
 	pass # Replace with function body.
+	

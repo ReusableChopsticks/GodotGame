@@ -41,6 +41,22 @@ func _ready():
 	pidgeon_label.visible = false
 	seagull_label.visible = false
 	child_label.visible = false
+	
+	
+	var pidgeon_count = 0
+	var seagull_count = 0
+	var child_count = 0
+	for bird in album.album.keys():
+		print(bird.name.substr(0,3))
+		if bird.name.substr(0,3) == "Pig": #cant believe i have to admit im naming them wrong
+			pidgeon_count += 1
+		if bird.name.substr(0,3) == "Sea":
+			seagull_count += 1
+		if bird.name.substr(0,3) == "Chi":
+			child_count += 1
+	pidgeon_label.text += str(pidgeon_count)
+	seagull_label.text += str(seagull_count)
+	child_label.text += str(child_count)
 
 # This is the most disgusting way to animate the text
 # but i couldn't find a better way
@@ -103,23 +119,9 @@ func _on_level_base_show_game_over_screen():
 	grade_sprite.visible = true
 	anim.play("show_grade")
 	await get_tree().create_timer(1.5).timeout
-	var pidgeon_count = 0
-	var seagull_count = 0
-	var child_count = 0
-	for bird in album.album.keys():
-		print(bird.name.substr(0,3))
-		if bird.name.substr(0,3) == "Pig": #cant believe i have to admit im naming them wrong
-			pidgeon_count += 1
-		if bird.name.substr(0,3) == "Sea":
-			seagull_count += 1
-		if bird.name.substr(0,3) == "Chi":
-			child_count += 1
-			
-	pidgeon_label.text += str(pidgeon_count)
+	
 	pidgeon_label.visible = true
 	await get_tree().create_timer(0.3).timeout
-	seagull_label.text += str(seagull_count)
 	seagull_label.visible = true
 	await get_tree().create_timer(0.3).timeout
-	child_label.text += str(child_count)
 	child_label.visible = true

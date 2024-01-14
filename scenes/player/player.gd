@@ -25,6 +25,8 @@ var game_over = false
 @export var enemies: Node
 @export var dash_velocity_multiplier: float = 3
 @export var player_stats: PlayerStats
+@export var hit_cost = 5
+@export var crumb_cost = 2
 
 @export var photo_cooldown = 1
 var current_photo_cooldown = photo_cooldown
@@ -84,6 +86,7 @@ func _process(delta):
 	if Input.is_action_pressed("throw"):
 		throw_distance += throw_grow_distance
 	if Input.is_action_just_released("throw") && !game_over:
+		player_stats.lunch_remaining -= crumb_cost
 		var throw_pos = global_position + (dir_facing * throw_distance)
 		throw.emit(global_position, throw_pos)
 		throw_distance = starting_throw_distance
@@ -138,7 +141,7 @@ func _process(delta):
 func on_player_hit(body):
 	if not is_invincible:
 		#print("ouch!!! hit by " + body.name)
-		player_stats.lunch_remaining -= 5
+		player_stats.lunch_remaining -= hit_cost
 		$EatProgressBar.value = 0
 		i_frames_timer.start()
 		

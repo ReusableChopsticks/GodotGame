@@ -23,9 +23,9 @@ func _on_player_camera_out(is_camera_out):
 func _on_player_camera_taking():
 	for enemy in in_picture:
 		album.album[enemy.get_parent()] = "dummy"
-		print(enemy.get_parent().name)
-	print(in_picture.size())
-	print(album.album.size())
+		#print(enemy.get_parent().name)
+	#print(in_picture.size())
+	#print(album.album.size())
 	pass # Replace with function body.
 
 

@@ -16,6 +16,8 @@ func _on_player_throw(player_pos, throw_pos):
 	crumb.global_position = player_pos
 	crumb.throw_time = throw_time
 	crumb.velocity = (throw_pos - player_pos) / throw_time
+	crumb.health = 2
 	## Spawn the mob by adding it to the Main scene.
 	add_child(crumb)
+	print(get_tree().get_nodes_in_group("crumbs").size())
 	pass

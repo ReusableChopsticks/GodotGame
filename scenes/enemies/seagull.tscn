@@ -38,7 +38,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmxpi"]
 radius = 5.09902
 
-[node name="Seagull" type="CharacterBody2D" groups=["enemy"]]
+[node name="Seagull" type="CharacterBody2D" groups=["enemy", "seagull"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ftxqo")
@@ -58,6 +58,7 @@ disabled = true
 
 [node name="DetectArea" type="Area2D" parent="."]
 collision_layer = 2
+collision_mask = 9
 
 [node name="DetectCollider" type="CollisionShape2D" parent="DetectArea"]
 shape = SubResource("CircleShape2D_lc353")
@@ -82,5 +83,7 @@ shape = SubResource("CircleShape2D_tmxpi")
 stream = ExtResource("6_g5ew3")
 
 [connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
+[connection signal="area_exited" from="DetectArea" to="." method="_on_detect_area_area_exited"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]

@@ -15,7 +15,7 @@ func _on_damage_rate_timer_timeout():
 func deal_damage(body):
 	if body.name == "Player":
 		GlobalSignals.player_hit.emit(get_parent())
-	if body.is_in_group("crumbs"):
+	if body.is_in_group("crumbs") && !get_parent().is_in_group("child"):
 		GlobalSignals.crumb_hit.emit(body)
 
 

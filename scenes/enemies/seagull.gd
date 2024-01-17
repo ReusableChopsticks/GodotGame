@@ -20,6 +20,8 @@ extends CharacterBody2D
 var hop_time: float = 0.1
 # to avoid seagull continuously locking on to player
 var is_attacking: bool = false
+var is_eating: bool = false
+var targets = []
 
 
 func _ready():
@@ -39,9 +41,28 @@ func _on_detect_area_body_entered(body):
 		#print(str(body.name) + " has entered seagull range")
 		pass
 
+func _on_detect_area_body_exited(body):
+	if body.name == "Player" and is_eating:
+		is_attacking = false
+		#distracted so loses sight
+
 # If the player is an Area2D for some reason, copy paste code above down here
-func _on_detect_area_area_entered(_area):
+# Julius is using this for crumbs
+func _on_detect_area_area_entered(area):
+	if area.is_in_group("crumbs"):
+		targets.push_back(area)
+		if !is_eating:
+			is_eating = true
+			fly_towards_crumbs(area)
+		else:
+			targets.push_back(area)
+		#should prioritise crumbs over the player crumbs already has a cost but maybe could speed up birds as well
 	pass
+
+
+func _on_detect_area_area_exited(area):
+	targets.erase(area)
+	pass # Replace with function body.
 
 
 func fly_towards_player():
@@ -58,10 +79,39 @@ func fly_towards_player():
 	# Make seagull fly to target pos with tween
 	tween.tween_property($".", "position", target_pos, attack_travel_time).set_trans(Tween.TRANS_QUAD)
 
+func fly_towards_crumbs(crumbs):
+	# just copying the player part and hoping, should really learn this after demo done
+	var tween = get_tree().create_tween().set_parallel(false)
+	tween.connect("finished", on_eat_finished)
+	
+	
+	# Adding this will make the seagull fly <attack_extra_distance_percentage> more past the player
+	var extra_flight = ((crumbs.position - position) * attack_extra_distance_percentage)
+	var target_pos = crumbs.position + extra_flight
+	
+	# face correct direction
+	orienter.face_direction(position.x, target_pos.x, sprite, false)
+	
+	# Make seagull fly to target pos with tween
+	tween.tween_property($".", "position", target_pos, attack_travel_time).set_trans(Tween.TRANS_QUAD)
+	pass
 
 func on_attack_finished():
 	is_attacking = false
-
+	
+func on_eat_finished():
+	await get_tree().create_timer(0.2).timeout
+	while targets.size() != 0 && !is_instance_valid(targets[0]):
+			targets.pop_front()
+	if targets.size() != 0:
+		fly_towards_crumbs(targets[0])
+		
+	if targets.size() == 0:
+		is_eating = false;
+		if is_attacking:
+			fly_towards_player()
+		
+	pass
 
 func hop_random_direction():
 	# get random distance and angle
@@ -83,7 +133,7 @@ func hop_random_direction():
 
 # hop every time the timer runs out
 func _on_hop_timer_timeout():
-	if !is_attacking:
+	if !is_attacking and !is_eating:
 		hop_random_direction()
 
 ## face correct directions, assuming facing right is default
@@ -112,3 +162,7 @@ func on_game_over():
 
 func play_attack_sound():
 	$AudioStreamPlayer2D.play(0.1)
+
+
+
+

@@ -39,7 +39,8 @@ func navigation_setup():
 	
 # use pathfinding to get where pigeon should hop next towards player
 func get_next_pos():
-	nav_agent.target_position = player_stats.player_pos
+	# so glad i found this line early on i knew something like this was here but like wtf is this youve already set it
+	#nav_agent.target_position = player_stats.player_pos
 	
 #region Alternate pathfinding with set max distance
 # this code will move the pigeon in the general direction in a definable distance
@@ -61,9 +62,24 @@ func _on_navigation_agent_2d_navigation_finished():
 	print("pigeon reached player")
 
 # make the pigeon hop towards player on random time intervals
+# or crumbs
 func _on_timer_timeout():
+	
 	if not Engine.is_editor_hint():
+		
 		nav_agent.target_position = player_stats.player_pos
+		
+		# search for closest player / crumb
+		var min_target = player_stats.player_pos
+		var min_target_dist = nav_agent.distance_to_target()
+		for crumbs in get_tree().get_nodes_in_group("crumbs"):
+			nav_agent.target_position = crumbs.position
+			if min_target_dist > nav_agent.distance_to_target():
+				min_target = crumbs.position
+				min_target_dist = nav_agent.distance_to_target()
+		
+		nav_agent.target_position = min_target
+		
 		#print(nav_agent.distance_to_target())
 		if nav_agent.distance_to_target() > detect_player_radius:
 			# hop randomly if player out of detection radius

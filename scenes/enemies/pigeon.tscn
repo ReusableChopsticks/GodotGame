@@ -34,7 +34,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3xhj"]
 radius = 7.0
 
-[node name="Pigeon" type="CharacterBody2D" groups=["enemy"]]
+[node name="Pigeon" type="CharacterBody2D" groups=["enemy", "pigeon"]]
 collision_layer = 2
 script = ExtResource("1_ybx6o")
 player_stats = ExtResource("2_alw6l")

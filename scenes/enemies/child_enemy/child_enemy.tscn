@@ -35,7 +35,7 @@ _data = {
 "fall_over": SubResource("Animation_d2h22")
 }
 
-[node name="ChildEnemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="ChildEnemy" type="CharacterBody2D" groups=["child", "enemy"]]
 collision_layer = 2
 collision_mask = 4
 velocity = Vector2(-0.719107, 0.694899)

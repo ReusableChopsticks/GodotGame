@@ -17,6 +17,7 @@ var can_dash: bool = true
 var game_over = false
 @onready var i_frames_timer: Timer = $InvincibilityTimer
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var base_speed: int = 100
 @export var moving = false
@@ -35,6 +36,7 @@ var current_photo_cooldown = photo_cooldown
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	sprite.play("looking_down")
 	throw_distance = starting_throw_distance
 	is_camera_out = false
 	speed = base_speed
@@ -131,6 +133,26 @@ func _process(delta):
 	
 	if disable_player_control:
 		velocity = Vector2.ZERO
+		
+	if velocity.length() == 0:
+		if dir_facing.y < 0:
+			sprite.play("looking_up")
+		if dir_facing.y > 0:
+			sprite.play("looking_down")
+		if dir_facing.x < 0:
+			sprite.play("looking_left")
+		if dir_facing.x > 0:
+			sprite.play("looking_right")
+	else:
+		if dir_facing.y < 0 && dir_facing.x == 0:
+			sprite.play("walking_up")
+		if dir_facing.y > 0 && dir_facing.x == 0:
+			sprite.play("walking_down")
+		if dir_facing.x < 0:
+			sprite.play("walking_left")
+		if dir_facing.x > 0:
+			sprite.play("walking_right")
+		
 	
 	var collision = move_and_slide()
 	# Set the player pos in stats resource to be accessed by other nodes

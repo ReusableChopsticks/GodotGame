@@ -118,12 +118,18 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ready_camera") && !game_over:
 		is_camera_out = !is_camera_out
+		#yeah i might remove the next line but currently theyre for different things
+		# camera/picture taker
 		camera_out.emit(is_camera_out)
+		# enemies dance
+		GlobalSignals.camera_change.emit(is_camera_out)
+		
 	current_photo_cooldown += delta
 	if Input.is_action_just_pressed("take_photo"):
 		if is_camera_out && current_photo_cooldown > photo_cooldown:
 			current_photo_cooldown = 0
 			camera_taking.emit()
+			GlobalSignals.picture_taken.emit(true)
 	
 	if Input.is_action_just_pressed("dash") and can_dash and not game_over:
 		dash()

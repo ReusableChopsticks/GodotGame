@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6bltyd5sc24d"]
+[gd_scene load_steps=16 format=3 uid="uid://b6bltyd5sc24d"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_base.gd" id="1_dup2c"]
 [ext_resource type="TileSet" uid="uid://cjgy3i8agdgn2" path="res://graphics/tilemaps/city/city.tres" id="1_ibaco"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://o4h0mxrrv31" path="res://scenes/PictureTaker/picture_taker.tscn" id="8_n4d0s"]
 [ext_resource type="AudioStream" uid="uid://b5euyn72511u2" path="res://audio/Mastodon - Blood And Thunder.mp3" id="9_ntuv1"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="9_pbc3h"]
+[ext_resource type="PackedScene" uid="uid://ds7csor0ms35o" path="res://scenes/GUI/tutorial_screen.tscn" id="13_88fwu"]
 [ext_resource type="PackedScene" uid="uid://b2l66svymsbhn" path="res://scenes/GUI/game_over_screen.tscn" id="13_rggri"]
 [ext_resource type="AudioStream" uid="uid://crehoe4n02ndv" path="res://audio/Silver Gull.mp3" id="14_wtw6e"]
 
@@ -109,6 +110,8 @@ player_stats = ExtResource("9_pbc3h")
 
 [node name="GameOverScreen" parent="." instance=ExtResource("13_rggri")]
 visible = false
+
+[node name="Tutorial Screen" parent="." instance=ExtResource("13_88fwu")]
 
 [node name="Audio" type="Node" parent="."]
 

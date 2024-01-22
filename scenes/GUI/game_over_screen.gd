@@ -123,5 +123,6 @@ func _on_level_base_show_game_over_screen():
 	pidgeon_label.visible = true
 	await get_tree().create_timer(0.3).timeout
 	seagull_label.visible = true
-	await get_tree().create_timer(0.3).timeout
-	child_label.visible = true
+	#i may alter this later to count times a child has been photoed for a score penalty
+	#await get_tree().create_timer(0.3).timeout
+	#child_label.visible = true

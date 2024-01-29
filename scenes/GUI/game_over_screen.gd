@@ -83,7 +83,7 @@ func _process(delta):
 		elif time > 2 and not first_eaten:
 			eaten_label.text = eaten_text + str(stats.lunch_eaten) + "%"
 			first_eaten = true
-			show_noise.play()
+			
 
 func on_game_over():
 	pass
@@ -116,6 +116,7 @@ func _on_level_base_show_game_over_screen():
 	#$MarginContainer/HBoxContainer/StatsContainer/TimeLabel.text += "%.2f" % stats.total_time
 	#$MarginContainer/HBoxContainer/StatsContainer/EatenLabel.text += str(stats.lunch_eaten) + "%"
 	await get_tree().create_timer(2).timeout
+	show_noise.play()
 	grade_sprite.visible = true
 	anim.play("show_grade")
 	await get_tree().create_timer(1.5).timeout

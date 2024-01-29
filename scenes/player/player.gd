@@ -100,12 +100,12 @@ func _process(delta):
 		pass
 	if Input.is_action_pressed("eat"):
 		can_dash = false
-		var hold_time = 2
+		var hold_time: float = 2
 		var eat_value = 10
 		velocity = Vector2.ZERO
 		# keep track of hold time
 		if not game_over:
-			$EatProgressBar.value += delta * (100/hold_time)
+			$EatProgressBar.value += delta * (100.0/hold_time)
 		if $EatProgressBar.value >= 100:
 			$EatProgressBar.value = 0
 			# only eat if you still have lunch
@@ -179,7 +179,8 @@ func on_player_hit(body):
 			body.play_attack_sound()
 
 func on_stats_updated():
-	$LunchProgressBar.value = player_stats.lunch_remaining
+	#$LunchProgressBar.value = player_stats.lunch_remaining
+	pass
 
 func _on_body_entered(_body):
 	#hide() # Player disappears after being hit.

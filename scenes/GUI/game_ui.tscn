@@ -158,17 +158,10 @@ one_shot = true
 
 [node name="Label" type="Label" parent="DashBar"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = 15.5
-offset_right = 141.0
-offset_bottom = 63.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -11.0
+offset_top = 32.0
+offset_right = 207.0
+offset_bottom = 80.0
 text = "PRESS SPACE TO DASH"
 label_settings = SubResource("LabelSettings_8ib5l")
 horizontal_alignment = 2

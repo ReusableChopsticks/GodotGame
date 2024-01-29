@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byc3q31dfxkfl"]
+[gd_scene load_steps=27 format=3 uid="uid://byc3q31dfxkfl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jyobo"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_r3ti7"]
@@ -127,6 +127,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltp45"]
 radius = 65.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2a8j"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrybh"]
+bg_color = Color(0.262745, 1, 0.568627, 1)
+
 [sub_resource type="Animation" id="Animation_6gm1p"]
 resource_name = "dash"
 length = 0.1
@@ -209,32 +215,16 @@ limit_right = 860
 limit_bottom = 480
 limit_smoothed = true
 
-[node name="LunchProgressBar" type="ProgressBar" parent="."]
-visible = false
-offset_left = -12.0
-offset_top = 11.0
-offset_right = 83.0
-offset_bottom = 38.0
-scale = Vector2(0.26, 0.26)
-
 [node name="EatProgressBar" type="ProgressBar" parent="."]
-modulate = Color(0, 1, 0.301961, 1)
 offset_left = -12.0
-offset_top = -26.0
+offset_top = -25.0
 offset_right = 83.0
-offset_bottom = 26.0
+offset_bottom = 7.0
 scale = Vector2(0.26, 0.26)
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -17.0
-offset_top = 20.0
-offset_right = 202.0
-offset_bottom = 69.0
-scale = Vector2(0.16, 0.16)
-text = "Hold E/X to eat
-(DUMMY IMPLEMENTATION)"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_d2a8j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jrybh")
+value = 10.0
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -250,6 +240,7 @@ libraries = {
 }
 
 [node name="CameraFlash" type="Polygon2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-200, -200, 200, -200, 200, 200, -200, 200)
 script = ExtResource("5_dc4ra")

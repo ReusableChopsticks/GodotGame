@@ -4,9 +4,6 @@ extends Area2D
 func _ready():
 	$DamageRateTimer.wait_time = damage_rate
 
-func _on_area_entered(area):
-	pass
-
 
 func _on_damage_rate_timer_timeout():
 	for node in get_overlapping_bodies():
@@ -20,6 +17,5 @@ func deal_damage(body):
 
 
 func _on_body_entered(body):
-	print("HIT DBEUG")
 	deal_damage(body)
 	$DamageRateTimer.start()

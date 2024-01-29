@@ -9,11 +9,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-
 func on_camera_change(is_out):
 	if is_out && !album.album.has(get_parent()):
 		play("dance")

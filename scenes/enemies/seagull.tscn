@@ -47,8 +47,10 @@ player_stats = ExtResource("2_qrg2w")
 metadata/_edit_group_ = true
 
 [node name="SeagullImage" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
 scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_jpumt")
+offset = Vector2(0, -130)
 flip_h = true
 region_rect = Rect2(4.81653, 15.2998, 1164.07, 1168.7)
 

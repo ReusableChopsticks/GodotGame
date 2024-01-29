@@ -10,7 +10,7 @@ func _ready():
 	album.album = {}
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	look_at(player_stats.player_facing + player_stats.player_pos)
 	
 

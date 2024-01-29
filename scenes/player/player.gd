@@ -162,7 +162,7 @@ func _process(delta):
 			sprite.play("walking_right")
 		
 	
-	var collision = move_and_slide()
+	var _collision = move_and_slide()
 	# Set the player pos in stats resource to be accessed by other nodes
 	player_stats.player_facing = dir_facing
 	player_stats.player_pos = position

@@ -59,7 +59,7 @@ func get_next_pos():
 
 func _on_navigation_agent_2d_navigation_finished():
 	target_reached = true
-	print("pigeon reached player")
+	#print("pigeon reached player")
 
 # make the pigeon hop towards player on random time intervals
 # or crumbs
@@ -129,8 +129,8 @@ func on_game_over():
 	# make it so pigeons ignore player after lunch is finished
 	detect_player_radius = 0
 
+# This is to prevent sfx from being cut off when the next one needs to be played
 func play_attack_sound():
-	#$AudioStreamPlayer2D.play()
 	var audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 	add_child(audio)
 	audio.stream = load("res://audio/pigeon_flap.mp3")

@@ -17,7 +17,7 @@ func on_instruction_anim_finished():
 	$"any key".visible = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if instruction_anim_finished and Input.is_anything_pressed() and not intro_started:	
 		$instructions.visible = false
 		$"any key".visible = false

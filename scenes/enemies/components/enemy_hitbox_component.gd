@@ -5,7 +5,7 @@ func _ready():
 	$DamageRateTimer.wait_time = damage_rate
 
 func _on_area_entered(area):
-	deal_damage(area)
+	pass
 
 
 func _on_damage_rate_timer_timeout():
@@ -19,5 +19,7 @@ func deal_damage(body):
 		GlobalSignals.crumb_hit.emit(body)
 
 
-func _on_body_entered(_body):
-	pass # Replace with function body.
+func _on_body_entered(body):
+	print("HIT DBEUG")
+	deal_damage(body)
+	$DamageRateTimer.start()

@@ -19,3 +19,8 @@ func deal_damage(body):
 func _on_body_entered(body):
 	deal_damage(body)
 	$DamageRateTimer.start()
+
+
+func _on_area_entered(area):
+	for node in get_overlapping_areas():
+		deal_damage(node)

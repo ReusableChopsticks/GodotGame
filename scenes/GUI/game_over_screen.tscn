@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2l66svymsbhn"]
+[gd_scene load_steps=15 format=3 uid="uid://b2l66svymsbhn"]
 
 [ext_resource type="Script" path="res://scenes/GUI/game_over_screen.gd" id="1_p0h60"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_g2kvi"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cpg8bm1haiuxn" path="res://scenes/GUI/letter_grades/1763_button-click-05.mp3" id="6_3fbbr"]
 [ext_resource type="AudioStream" uid="uid://dc63vcbgsal2" path="res://scenes/GUI/letter_grades/1001_metal-button-01.mp3" id="7_tm0dw"]
 [ext_resource type="Animation" uid="uid://diq5gpmum71at" path="res://scenes/GUI/letter_grades/random_nums.res" id="8_5wcxc"]
+[ext_resource type="AudioStream" uid="uid://y82h65f7g4w" path="res://1001_metal-button-01.mp3" id="10_sypq2"]
 [ext_resource type="AudioStream" uid="uid://dw47cnl7frjtx" path="res://audio/(short) Yippee sound effect!!.mp3" id="10_tr6yr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlukp"]
@@ -192,11 +193,11 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 3.65
 
 [node name="GradeSprite" type="Sprite2D" parent="MarginContainer/HBoxContainer/GradeContainer/SpriteContainer"]
+modulate = Color(0.282353, 0.282353, 0.282353, 1)
 scale = Vector2(2.43333, 2.43333)
 texture = ExtResource("2_plnmq")
 hframes = 3
 vframes = 3
-frame = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/GradeContainer"]
 layout_mode = 2
@@ -224,6 +225,7 @@ libraries = {
 [node name="Audio" type="Node" parent="."]
 
 [node name="show_grade" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_sypq2")
 volume_db = 1.5
 
 [node name="shuffle_grade" type="AudioStreamPlayer" parent="Audio"]

@@ -86,12 +86,14 @@ func _on_level_base_show_game_over_screen():
 		time_label.text = time_text + ("%.2f" % rand_nums()) + "s"
 		await get_tree().create_timer(0.05).timeout
 	show_noise.play()
+	time_label.text = time_text + ("%.2f" % stats.total_time) + "s"
 	# shuffle through random nums for score
 	for i in range(20):
 		shuffle_noise.play()
 		eaten_label.text = eaten_text + str("%.f" %rand_nums()) + "%"
 		await get_tree().create_timer(0.05).timeout
 	show_noise.play()
+	eaten_label.text = eaten_text + str("%.f" %stats.lunch_eaten) + "%"
 
 	# play animation for final grade
 	grade_sprite.visible = true

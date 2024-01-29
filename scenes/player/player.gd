@@ -62,7 +62,7 @@ func _ready():
 	$CollisionShape2D.set_deferred("disabled", false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta):	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed
 	#var velocity = Vector2.ZERO

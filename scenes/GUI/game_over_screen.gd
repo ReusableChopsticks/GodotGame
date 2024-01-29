@@ -21,7 +21,7 @@ var refresh = 0.0
 
 # dictionary of threshholds for each grade
 var grades = {
-	"S": 90,
+	"S": 95,
 	"A": 80,
 	"B": 70,
 	"C": 60,
@@ -31,7 +31,6 @@ var grades = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#visible = false
-	GlobalSignals.game_over.connect(on_game_over)
 	time_text = time_label.text
 	eaten_text = eaten_label.text
 	time_label.text += "----"
@@ -58,36 +57,6 @@ func _ready():
 	seagull_label.text += str(seagull_count)
 	child_label.text += str(child_count)
 
-# This is the most disgusting way to animate the text
-# but i couldn't find a better way
-# so this is just to show what i wanted to achieve
-var first_time = false
-var first_eaten = false
-var game_over = false
-func _process(delta):
-	if game_over:
-		time += delta
-		refresh += delta
-		if refresh > 0.05 and time < 2:
-			refresh = 0
-			shuffle_noise.play()
-			if time < 1:
-				time_label.text = time_text + ("%.2f" % rand_nums()) + "s"
-			elif time < 2:
-				eaten_label.text = eaten_text + str("%.f" %rand_nums()) + "%"
-		
-		if time > 1 and not first_time:
-			time_label.text = time_text + "%.2f" % stats.total_time
-			first_time = true
-			show_noise.play()
-		elif time > 2 and not first_eaten:
-			eaten_label.text = eaten_text + str(stats.lunch_eaten) + "%"
-			first_eaten = true
-			
-
-func on_game_over():
-	pass
-
 func show_letter_grade():
 	# this works only for the specific sprite sheet i found
 	# update later when revamping graphics
@@ -109,18 +78,27 @@ func rand_nums() -> float:
 	return randf_range(0, 500)
 	
 
-
 func _on_level_base_show_game_over_screen():
 	visible = true
-	game_over = true
-	#$MarginContainer/HBoxContainer/StatsContainer/TimeLabel.text += "%.2f" % stats.total_time
-	#$MarginContainer/HBoxContainer/StatsContainer/EatenLabel.text += str(stats.lunch_eaten) + "%"
-	await get_tree().create_timer(2).timeout
+	# shuffle through random nums for time
+	for i in range(20):
+		shuffle_noise.play()
+		time_label.text = time_text + ("%.2f" % rand_nums()) + "s"
+		await get_tree().create_timer(0.05).timeout
 	show_noise.play()
+	# shuffle through random nums for score
+	for i in range(20):
+		shuffle_noise.play()
+		eaten_label.text = eaten_text + str("%.f" %rand_nums()) + "%"
+		await get_tree().create_timer(0.05).timeout
+	show_noise.play()
+
+	# play animation for final grade
 	grade_sprite.visible = true
 	anim.play("show_grade")
-	await get_tree().create_timer(1.5).timeout
-	
+	await get_tree().create_timer(1).timeout
+	if stats.lunch_eaten >= grades["S"]:
+		$Audio/YIPPEE.play(0.5)
 	pidgeon_label.visible = true
 	await get_tree().create_timer(0.3).timeout
 	seagull_label.visible = true

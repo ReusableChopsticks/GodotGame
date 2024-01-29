@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://crehoe4n02ndv" path="res://audio/Silver Gull.mp3" id="14_wtw6e"]
 
 [node name="LevelBase" type="Node2D" node_paths=PackedStringArray("music", "game_over_audio")]
+process_mode = 1
 script = ExtResource("1_dup2c")
 stats = ExtResource("9_pbc3h")
 music = NodePath("Audio/Music/BGMusic")
@@ -133,3 +134,4 @@ volume_db = 3.0
 [connection signal="eat" from="Player" to="Player/Lunch" method="_on_player_eat"]
 [connection signal="throw" from="Player" to="CrumbThrower" method="_on_player_throw"]
 [connection signal="eating_speed_percentage" from="Player/Lunch" to="Player" method="_on_lunch_eating_speed_percentage"]
+[connection signal="game_started" from="Tutorial Screen" to="." method="_on_tutorial_screen_game_started"]

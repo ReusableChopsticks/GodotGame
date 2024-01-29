@@ -12,7 +12,7 @@ func _ready():
 	# show all default values for UI
 	GlobalSignals.stats_updated.emit()
 	GlobalSignals.game_over.connect(on_game_over)
-	music.play()
+	#music.play()
 
 
 func _process(delta):
@@ -27,4 +27,4 @@ func on_game_over():
 	show_game_over_screen.emit()
 
 func _on_tutorial_screen_game_started():
-	print("game started")
+	music.play()

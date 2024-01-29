@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf0yusii3k8qo"]
+[gd_scene load_steps=12 format=3 uid="uid://bf0yusii3k8qo"]
 
 [ext_resource type="Script" path="res://scenes/GUI/LunchRemainingPBar.gd" id="1_b0qxd"]
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenNumber.gd" id="1_dw835"]
@@ -6,12 +6,22 @@
 [ext_resource type="Script" path="res://scenes/GUI/LunchEatenProgressBar.gd" id="3_076jx"]
 [ext_resource type="Texture2D" uid="uid://dcunm012j5r8" path="res://graphics/Circle_double_border_black_filling_white.svg.png" id="4_e1a61"]
 [ext_resource type="Script" path="res://scenes/GUI/DashBar.gd" id="6_o7e4m"]
+[ext_resource type="StyleBox" uid="uid://xft7qlcfgp35" path="res://themes/new_style_box_flat.tres" id="6_otg14"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41cw"]
 font_size = 32
 
 [sub_resource type="Theme" id="Theme_vih6p"]
 default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuwlp"]
+bg_color = Color(0.670588, 0.85098, 1, 1)
+skew = Vector2(1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ib5l"]
+font_size = 25
+font_color = Color(0.913725, 0.913725, 0.913725, 1)
+shadow_color = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -129,11 +139,13 @@ stats = ExtResource("2_m6raa")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -211.0
+offset_left = -346.0
 offset_top = 20.0
 offset_right = -24.0
-offset_bottom = 72.0
+offset_bottom = 49.0
 grow_horizontal = 0
+theme_override_styles/background = ExtResource("6_otg14")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uuwlp")
 max_value = 2.0
 value = 0.93
 show_percentage = false
@@ -143,3 +155,22 @@ stats = ExtResource("2_m6raa")
 [node name="Timer" type="Timer" parent="DashBar"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Label" type="Label" parent="DashBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 15.5
+offset_right = 141.0
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS SPACE TO DASH"
+label_settings = SubResource("LabelSettings_8ib5l")
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true

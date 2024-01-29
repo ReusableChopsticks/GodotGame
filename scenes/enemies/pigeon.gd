@@ -130,4 +130,10 @@ func on_game_over():
 	detect_player_radius = 0
 
 func play_attack_sound():
-	$AudioStreamPlayer2D.play()
+	#$AudioStreamPlayer2D.play()
+	var audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	add_child(audio)
+	audio.stream = load("res://audio/pigeon_flap.mp3")
+	audio.play(	)
+	await audio.finished
+	audio.queue_free()

@@ -163,7 +163,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.1, 2),
 "transitions": PackedFloat32Array(0.189465, 1),
 "update": 0,
-"values": [Color(0.0156863, 0, 0.431373, 0), Color(0.0156863, 0, 0.431373, 0.607843)]
+"values": [Color(0.0156863, 0, 0.431373, 0), Color(0.0941176, 0.0901961, 0.188235, 0.909804)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -212,13 +212,13 @@ script = ExtResource("1_606td")
 
 [node name="dim" type="ColorRect" parent="."]
 process_mode = 3
-modulate = Color(0.0156863, 0, 0.431373, 0)
+modulate = Color(0.0156863, 0, 0.431373, 0.607843)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0156863, 0, 0.431373, 0.341176)
+color = Color(0.0156863, 0, 0.192157, 0.709804)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -244,6 +244,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="tutorial" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -290,6 +291,7 @@ size_flags_vertical = 4
 texture = ExtResource("1_bwnkf")
 
 [node name="frame" type="TextureRect" parent="instructions"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,6 +309,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_jdg2w")
 
 [node name="CrossingSignal" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

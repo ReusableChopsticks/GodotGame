@@ -12,6 +12,7 @@ func _ready():
 
 func _on_button_up():
 	get_tree().reload_current_scene()
+	
 
 func highlight():
 	create_tween().tween_property($".", "modulate", Color.ORANGE_RED, col_fade_time).set_trans(Tween.TRANS_CUBIC)

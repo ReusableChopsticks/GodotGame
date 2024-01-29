@@ -99,6 +99,7 @@ func _process(delta):
 		#eat.emit(moving)
 		pass
 	if Input.is_action_pressed("eat"):
+		can_dash = false
 		var hold_time = 2
 		var eat_value = 10
 		velocity = Vector2.ZERO
@@ -115,6 +116,7 @@ func _process(delta):
 				player_stats.lunch_remaining -= eaten
 	if Input.is_action_just_released("eat"):
 		$EatProgressBar.value = 0
+		can_dash = true
 	
 	if Input.is_action_just_pressed("ready_camera") && !game_over:
 		is_camera_out = !is_camera_out

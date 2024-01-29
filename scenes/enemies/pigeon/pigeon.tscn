@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dit5w5w4jygsn"]
 
-[ext_resource type="Texture2D" uid="uid://3jmw8j03fhjf" path="res://scenes/enemies/pigeon.png" id="1_8f0p4"]
-[ext_resource type="Script" path="res://scenes/enemies/pigeon.gd" id="1_ybx6o"]
+[ext_resource type="Texture2D" uid="uid://3jmw8j03fhjf" path="res://scenes/enemies/pigeon/pigeon.png" id="1_8f0p4"]
+[ext_resource type="Script" path="res://scenes/enemies/pigeon/pigeon.gd" id="1_ybx6o"]
 [ext_resource type="Resource" uid="uid://56om27nhd85w" path="res://resources/player_stats.tres" id="2_alw6l"]
 [ext_resource type="PackedScene" uid="uid://2hxiac27cos1" path="res://scenes/enemies/components/sprite_orienter.tscn" id="4_5j108"]
 [ext_resource type="Animation" uid="uid://dcboc7bu76n2j" path="res://animations/bird_hop.res" id="4_nrjr0"]

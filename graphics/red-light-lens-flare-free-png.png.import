@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3jmw8j03fhjf"
-path="res://.godot/imported/pigeon.png-a14b0d01cd59e56136df837393701d7d.ctex"
+uid="uid://g7np1616gr43"
+path="res://.godot/imported/red-light-lens-flare-free-png.png-0be4683c6129b31930ef3b8c143cd367.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemies/pigeon.png"
-dest_files=["res://.godot/imported/pigeon.png-a14b0d01cd59e56136df837393701d7d.ctex"]
+source_file="res://graphics/red-light-lens-flare-free-png.png"
+dest_files=["res://.godot/imported/red-light-lens-flare-free-png.png-0be4683c6129b31930ef3b8c143cd367.ctex"]
 
 [params]
 

@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var orienter: Node
 @export var attack_travel_time: float = 2
 @export var attack_extra_distance_percentage: float = 0.5
-@export var player_stats: Resource
+@export var player_stats: PlayerStats
 @export var max_time_before_hop: int = 1
 @export var max_hop_distance: int = 5
 # how long it takes to hop from one point to another
@@ -33,7 +33,8 @@ func _ready():
 # For a character body 2d
 func _on_detect_area_body_entered(body):
 	if body.name == "Player" and !is_attacking:
-		#print("player detected")
+		$AnimationPlayer.play("detect")
+		#await get_tree().create_timer(1).timeout
 		is_attacking = true
 		fly_towards_player()
 	else:
@@ -161,7 +162,7 @@ func on_game_over():
 	$DetectArea.monitoring = false
 
 func play_attack_sound():
-	$AudioStreamPlayer2D.play(0.1)
+	$Squawk.play(0.1)
 
 
 

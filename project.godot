@@ -14,7 +14,8 @@ config/name="Bird Crime Lunch Time"
 config/description="I JUST WANT TO EAT LUNCH IN PEACE"
 run/main_scene="res://scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/bg_color=Color(0, 0, 0.890196, 1)
+boot_splash/image="res://scenes/pigeon.png"
 config/icon="res://graphics/pixel-pigeon-vector-isolated-cute-223987582.webp"
 
 [autoload]
@@ -101,4 +102,4 @@ dash={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"

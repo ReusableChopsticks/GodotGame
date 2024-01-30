@@ -240,7 +240,6 @@ libraries = {
 }
 
 [node name="CameraFlash" type="Polygon2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-200, -200, 200, -200, 200, 200, -200, 200)
 script = ExtResource("5_dc4ra")

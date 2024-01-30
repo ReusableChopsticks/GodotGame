@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="LunchBulletHell"
+config/name="Bird Crime Lunch Time"
+config/description="I JUST WANT TO EAT LUNCH IN PEACE"
 run/main_scene="res://scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="res://graphics/pixel-pigeon-vector-isolated-cute-223987582.webp"
 
 [autoload]
 

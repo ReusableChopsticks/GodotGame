@@ -19,6 +19,8 @@ var shuffle_frequency: float = 0.1
 var time = 0.0
 var refresh = 0.0
 
+var first_time_called : bool = true
+
 # dictionary of threshholds for each grade
 var grades = {
 	"S": 95,
@@ -42,20 +44,7 @@ func _ready():
 	child_label.visible = false
 	
 	
-	var pidgeon_count = 0
-	var seagull_count = 0
-	var child_count = 0
-	for bird in album.album.keys():
-		print(bird.name.substr(0,3))
-		if bird.name.substr(0,3) == "Pig": #cant believe i have to admit im naming them wrong
-			pidgeon_count += 1
-		if bird.name.substr(0,3) == "Sea":
-			seagull_count += 1
-		if bird.name.substr(0,3) == "Chi":
-			child_count += 1
-	pidgeon_label.text += str(pidgeon_count)
-	seagull_label.text += str(seagull_count)
-	child_label.text += str(child_count)
+	
 
 func show_letter_grade():
 	# this works only for the specific sprite sheet i found
@@ -79,6 +68,27 @@ func rand_nums() -> float:
 	
 
 func _on_level_base_show_game_over_screen():
+	#for some reason this can be called twice (geogi neo I fancy you amuna wonhaji anh-a) so this stops that
+	if !first_time_called:
+		return
+	else:
+		first_time_called = false
+		
+	var pidgeon_count = 0
+	var seagull_count = 0
+	var child_count = 0
+	for bird in album.album.keys():
+		print(bird.name.substr(0,3))
+		if bird.name.substr(0,3) == "Pig": #cant believe i have to admit im naming them wrong
+			pidgeon_count += 1
+		if bird.name.substr(0,3) == "Sea":
+			seagull_count += 1
+		if bird.name.substr(0,3) == "Chi":
+			child_count += 1
+	pidgeon_label.text += str(pidgeon_count)
+	seagull_label.text += str(seagull_count)
+	child_label.text += str(child_count)
+	
 	visible = true
 	# shuffle through random nums for time
 	for i in range(20):
